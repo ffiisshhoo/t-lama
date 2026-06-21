@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Lama z Podmezí</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 30px;
+}
+
+/* Jemné logo na pozadí */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('/web_images/t-lama.png') center center no-repeat;
+    background-size: 250px;
+    opacity: 0.06;
+    z-index: -1;
+}
+
+/* Loga po stranách */
+.logo-left,
+.logo-right {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    opacity: 0.20;
+    z-index: -1;
+}
+
+.logo-left {
+    left: 40px;
+}
+
+.logo-right {
+    right: 40px;
+}
+
+.card {
+    display: inline-block;
+    background: rgba(255,255,255,0.94);
+    padding: 35px 50px;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    margin-top: 40px;
+}
+
+h1 {
+    color: #6b4e2e;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 38px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 15px 0;
+}
+
+a {
+    color: #6b4e2e;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #c05a8d;
+    text-decoration: underline;
+}
+
+/* Mobil */
+@media (max-width: 900px) {
+
+    .logo-left,
+    .logo-right {
+        display: none;
+    }
+
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    a {
+        font-size: 24px;
+    }
+
+    body::before {
+        background-size: 180px;
+        opacity: 0.08;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img class="logo-left" src="/web_images/t-lama.png" alt="T-Lama">
+<img class="logo-right" src="/web_images/t-lama.png" alt="T-Lama">
+
+<div class="card">
+
+    <h1>🦙 Kde všude už jsme pluly</h1>
+
+    <ul>
+        <li><a href="/2020.html">🚣 2020 – Berounka</a></li>
+        <li><a href="/2021.html">🚣 2021 – Vltava</a></li>
+        <li><a href="/2022.html">🚣 2022 – Otava</a></li>
+        <li><a href="/2023.html">🚣 2023 – Berounka</a></li>
+        <li><a href="/2024.html">🚣 2024 – Ohře</a></li>
+        <li><a href="/2025.html">🚣 2025 – Ohře</a></li>
+        <li><a href="/2026.html">🚣 2026 – Vltava</a></li>
+    </ul>
+
+</div>
+
+</body>
+</html>
