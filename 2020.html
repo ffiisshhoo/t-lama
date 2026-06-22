@@ -48,6 +48,240 @@ p {
     max-width: 100%;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.galerie img:hover {
+    transform: scale(1.03);
+}
+
+/* Zobrazení fotky přes celou obrazovku */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.92);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 15px;
+}
+
+.close,
+.prev,
+.next {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.close {
+    top: 20px;
+    right: 30px;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.buttons {
+    margin-top: 40px;
+}
+
+.tlacitko {
+    display: inline-block;
+    margin: 10px;
+    background: #c86ca0;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 22px;
+}
+
+.tlacitko:hover {
+    background: #b45a8d;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .galerie img {
+        width: 100%;
+    }
+
+    .close,
+    .prev,
+    .next {
+        font-size: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛶 Berounka 2020</h1>
+
+<p>
+Tady to všechno začalo. 🦙
+</p>
+
+<p>
+Pro většinu z nás, a hlavně pro děti, to byla první voda v životě.
+Nikdo tehdy netušil, že z jedné plavby vznikne tradice,
+která nás bude každý rok znovu dávat dohromady.
+</p>
+
+<p>
+Bylo hodně smíchu, první vodácké zkušenosti,
+pár mokrých bot, trochu strachu z jezů
+a hlavně spousta krásných vzpomínek.
+</p>
+
+<p>
+Právě na Berounce se zrodila naše parta
+<strong>T-Lama z Podmezí</strong>
+a začalo dobrodružství, které pokračuje dodnes.
+❤️🛶🦙
+</p>
+
+<h2>📸 Fotky z plavby</h2>
+
+<div class="galerie">
+    <img src="./fotky/2020/foto1.jpeg" onclick="openPhoto(0)">
+    <img src="./fotky/2020/foto2.jpeg" onclick="openPhoto(1)">
+    <img src="./fotky/2020/foto3.jpeg" onclick="openPhoto(2)">
+</div>
+
+<div class="buttons">
+    <a class="tlacitko" href="index.html">← Zpět na přehled plaveb</a>
+</div>
+
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closePhoto()">✕</span>
+    <span class="prev" onclick="changePhoto(-1)">❮</span>
+    <img id="lightbox-img">
+    <span class="next" onclick="changePhoto(1)">❯</span>
+</div>
+
+<script>
+const photos = [
+    "./fotky/2020/foto1.jpeg",
+    "./fotky/2020/foto2.jpeg",
+    "./fotky/2020/foto3.jpeg"
+];
+
+let current = 0;
+
+function openPhoto(i) {
+    current = i;
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = photos[current];
+}
+
+function closePhoto() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function changePhoto(step) {
+    current += step;
+
+    if (current < 0) current = photos.length - 1;
+    if (current >= photos.length) current = 0;
+
+    document.getElementById("lightbox-img").src = photos[current];
+}
+
+document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lightbox").style.display === "flex") {
+        if (e.key === "ArrowLeft") changePhoto(-1);
+        if (e.key === "ArrowRight") changePhoto(1);
+        if (e.key === "Escape") closePhoto();
+    }
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berounka 2020</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+h1 {
+    color: #6a513a;
+    font-size: 42px;
+}
+
+p {
+    font-size: 24px;
+    line-height: 1.7;
+}
+
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.galerie img {
+    width: 250px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .zpet {
