@@ -27,50 +27,59 @@ body {
 
 h1 {
     color: #6a513a;
+    font-size: 42px;
 }
 
 p {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.7;
 }
 
 .galerie {
     display: flex;
-    gap: 20px;
-    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 40px;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .galerie img {
     width: 250px;
     max-width: 100%;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .zpet {
     display: inline-block;
     margin-top: 40px;
-    padding: 15px 30px;
     background: #c86ca0;
     color: white;
     text-decoration: none;
+    padding: 15px 30px;
     border-radius: 15px;
     font-size: 22px;
 }
 
 .zpet:hover {
-    background: #b15c8e;
+    background: #b45a8d;
 }
 
 @media (max-width: 700px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
     p {
         font-size: 20px;
     }
 
-    .container {
-        padding: 20px;
+    .galerie img {
+        width: 100%;
     }
 }
 </style>
@@ -108,9 +117,9 @@ a začalo dobrodružství, které pokračuje dodnes.
 <h2>📸 Fotky z plavby</h2>
 
 <div class="galerie">
-    <img src="fotky/2020/foto1.jpeg" alt="">
-    <img src="fotky/2020/foto2.jpeg" alt="">
-    <img src="fotky/2020/foto3.jpeg" alt="">
+    <img src="./fotky/2020/foto1.jpeg" alt="Foto 1">
+    <img src="./fotky/2020/foto2.jpeg" alt="Foto 2">
+    <img src="./fotky/2020/foto3.jpeg" alt="Foto 3">
 </div>
 
 <a class="zpet" href="index.html">
