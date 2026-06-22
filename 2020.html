@@ -7,66 +7,80 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
     margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
     padding: 20px;
+}
+
+.container {
+    background: white;
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     text-align: center;
 }
 
-.card {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
 h1 {
-    color: #6b4e2e;
+    color: #6a513a;
 }
 
 p {
-    font-size: 20px;
+    font-size: 26px;
     line-height: 1.7;
 }
 
-.back {
+.galerie {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.galerie img {
+    width: 250px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.zpet {
     display: inline-block;
-    margin-top: 30px;
-    padding: 12px 25px;
-    background: #c05a8d;
+    margin-top: 40px;
+    padding: 15px 30px;
+    background: #c86ca0;
     color: white;
     text-decoration: none;
     border-radius: 15px;
-    font-weight: bold;
+    font-size: 22px;
 }
 
-.back:hover {
-    background: #a84b79;
+.zpet:hover {
+    background: #b15c8e;
 }
 
-.gallery {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 15px;
-}
+@media (max-width: 700px) {
+    p {
+        font-size: 20px;
+    }
 
-.gallery img {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    .container {
+        padding: 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="container">
 
-<h1>🚣 Berounka 2020</h1>
+<h1>🛶 Berounka 2020</h1>
 
 <p>
 Tady to všechno začalo. 🦙
@@ -74,26 +88,34 @@ Tady to všechno začalo. 🦙
 
 <p>
 Pro většinu z nás, a hlavně pro děti, to byla první voda v životě.
-Nikdo tehdy netušil, že z jedné plavby vznikne tradice, která nás bude každý rok znovu dávat dohromady.
+Nikdo tehdy netušil, že z jedné plavby vznikne tradice,
+která nás bude každý rok znovu dávat dohromady.
 </p>
 
 <p>
-Bylo hodně smíchu, první vodácké zkušenosti, pár mokrých bot, trochu strachu z jezů a hlavně spousta krásných vzpomínek.
+Bylo hodně smíchu, první vodácké zkušenosti,
+pár mokrých bot, trochu strachu z jezů
+a hlavně spousta krásných vzpomínek.
 </p>
 
 <p>
-Právě na Berounce se zrodila naše parta <strong>T-Lama z Podmezí</strong> a začalo dobrodružství, které pokračuje dodnes. ❤️🚣🦙
+Právě na Berounce se zrodila naše parta
+<strong>T-Lama z Podmezí</strong>
+a začalo dobrodružství, které pokračuje dodnes.
+❤️🛶🦙
 </p>
 
 <h2>📸 Fotky z plavby</h2>
 
-<div class="gallery">
-    <img src="fotky/2020/foto1.jpg">
-    <img src="fotky/2020/foto2.jpg">
-    <img src="fotky/2020/foto3.jpg">
+<div class="galerie">
+    <img src="fotky/2020/foto1.jpeg" alt="">
+    <img src="fotky/2020/foto2.jpeg" alt="">
+    <img src="fotky/2020/foto3.jpeg" alt="">
 </div>
 
-<a class="back" href="index.html">⬅ Zpět na přehled plaveb</a>
+<a class="zpet" href="index.html">
+← Zpět na přehled plaveb
+</a>
 
 </div>
 
