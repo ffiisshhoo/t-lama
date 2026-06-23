@@ -1,1 +1,384 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berounka 2023</title>
 
+<style>
+:root{
+    --bg-color:#f2f2f2;
+    --text-color:#333;
+    --box-bg:white;
+    --header-bg:#2f6b3f;
+    --card-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark){
+    :root{
+        --bg-color:#121212;
+        --text-color:#e0e0e0;
+        --box-bg:#1e1e1e;
+        --header-bg:#20472a;
+    }
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
+}
+
+header{
+    background:var(--header-bg);
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.back-button{
+    display:inline-block;
+    background:var(--header-bg);
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:10px;
+    margin:20px 0;
+    font-weight:bold;
+}
+
+.text{
+    background:var(--box-bg);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:var(--card-shadow);
+    margin-bottom:30px;
+    line-height:1.8;
+}
+
+.text a{
+    color:#2f6b3f;
+    font-weight:bold;
+}
+
+.mapa{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.mapa img{
+    width:100%;
+    max-width:900px;
+    border-radius:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.stats-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:0 auto 40px auto;
+}
+
+.stat-card{
+    background:var(--box-bg);
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:var(--card-shadow);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+}
+
+.value{
+    font-size:28px;
+    font-weight:bold;
+    color:#2f6b3f;
+    display:block;
+}
+
+.galerie{
+    column-count:4;
+    column-gap:20px;
+    width:100%;
+}
+
+@media (max-width:1100px){
+    .galerie{column-count:3;}
+}
+@media (max-width:800px){
+    .galerie{column-count:2;}
+}
+@media (max-width:500px){
+    .galerie{column-count:1;}
+}
+
+.galerie img,
+.galerie video{
+    display:inline-block;
+    width:100%;
+    border-radius:15px;
+    cursor:pointer;
+    margin-bottom:20px;
+    break-inside:avoid;
+    transition:.3s;
+}
+
+.galerie img:hover,
+.galerie video:hover{
+    transform:scale(1.03);
+}
+
+.lightbox{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    justify-content:center;
+    align-items:center;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+}
+
+.lightbox img,
+.lightbox video{
+    max-width:90%;
+    max-height:80%;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚣 Berounka 2023</h1>
+</header>
+
+<div class="container">
+
+<a href="index.html" class="back-button">← Zpět na přehled plaveb</a>
+
+<div class="text">
+
+<h2>🌊 Berounka 2023 – první plastové kánoe a velké plány</h2>
+
+<p>
+Rok 2023 přinesl několik změn a naše parta se trochu zmenšila.
+O to větší jsme ale měli chuť znovu vyrazit na vodu.
+Tentokrát už opravdu i s dětmi.
+Gumové rafty jsme vyměnili za plastové kánoe a poprvé jsme se rozdělili –
+každý dospělý (a někde i dva dospělí) dostal do své kánoe jednoho malého
+námořníka, který se občas proměnil v kapitána a určoval směr plavby.
+Volba byla jasná – Berounka, kterou máme doslova za kopečkem a která je
+pro rodinnou vodáckou výpravu jako stvořená.
+</p>
+
+<p>
+Ve dnech <strong>20.–23. července 2023</strong> jsme tedy opět vyrazili
+na naši tradiční vodáckou výpravu.
+A protože jsme při první Berounce měli skvělé zázemí v
+<a href="https://www.kempkobylka.cz/" target="_blank">Kempu Kobylka</a>,
+který máme doslova za humny, nebyl důvod nic měnit.
+Ve čtvrtek jsme naložili naše motorizovaná autíčka a přesunuli se do Liblína.
+</p>
+
+<h3>🚣 Den první – Dolanský most a velké plány</h3>
+
+<p>
+V pátek ráno jsme se nechali odvést k Dolanskému mostu,
+kde jsme plní sil, odhodlání a nadšení usedli do zapůjčených plastových kánoí.
+Plán byl jasný – doplout až do Kobylky.
+Jenže, jak se později ukázalo, naše odhodlání bylo o něco větší než naše fyzička.
+</p>
+
+<h3>🛟 Záchrana u Žíkovského mlýna</h3>
+
+<p>
+Naštěstí nás u jezu Žíkovský mlýn potkalo doslova vysvobození.
+Narazili jsme na majitele půjčovny
+<a href="https://www.h2osport.cz/" target="_blank">H2O SPORT Sikyta</a>,
+který, když viděl vyčerpané ženy a děti, se nad námi slitoval.
+A i když lodě vůbec nebyly z jeho půjčovny, naložil nás i s kánoemi a odvezl
+zpět do Kobylky.
+Tam sklidil od místních lehký posměch s otázkou,
+co to zase veze za výpravu a za lodě. 😄
+</p>
+
+<p>
+A aby toho nebylo málo, při nakládání lodí si jedna nejmenovaná osoba
+zablokovala záda. Po statečně přetrpěné noci na nafukovací matraci ve stanu
+nám ráno zamávala a odjela se kurýrovat domů.
+</p>
+
+<h3>🚣 Druhý pokus</h3>
+
+<p>
+My ostatní jsme po nočním odpočinku načerpali nové síly a v sobotu znovu
+vypluli, tentokrát směrem ke
+<a href="https://www.kempupotucku.cz/" target="_blank">Kempu U Potůčku</a>.
+Odtud nás autobusová linka dopravila zpět do Kobylky, kde nás už čekala
+výrazně méně indisponovaná osoba se zády.
+</p>
+
+<p>
+Poslední večer jsme si užili tak, jak to máme nejraději –
+v kempu u vody, s dobrou náladou a spoustou zážitků.
+</p>
+
+<p>
+V neděli už nezbývalo nic jiného než sbalit stany,
+ještě jednou se projít podél řeky a vyrazit směrem domů…
+a pomalu začít přemýšlet, co vymyslíme na příští rok.
+</p>
+
+<p>
+A tentokrát jsme byli připraveni i po technické stránce –
+nové GoPro už bylo k dispozici, takže žádný utopený hrdina na dně řeky
+a všechny letošní zážitky mohly být poctivě zaznamenány. 📷😄
+</p>
+
+<p>
+<strong>
+Možná nás bylo o pár méně, možná jsme nedopluli tak daleko,
+jak jsme původně plánovali, ale o zážitky, smích a společné chvíle
+rozhodně nouze nebyla.
+A o tom naše plavby vždycky byly, jsou a snad ještě dlouho budou.
+❤️🚣‍♂️🌊
+</strong>
+</p>
+
+</div>
+
+<div class="mapa">
+    <img src="fotky/2023/mapa.png" alt="Mapa plavby">
+</div>
+
+<div class="stats-container">
+    <div class="stat-card">
+        <span class="value">4</span>
+        <div>Dny na vodě</div>
+    </div>
+
+    <div class="stat-card">
+        <span class="value">2</span>
+        <div>Plastové kánoe</div>
+    </div>
+
+    <div class="stat-card">
+        <span class="value">1</span>
+        <div>Zachránce Sikyta</div>
+    </div>
+
+    <div class="stat-card">
+        <span class="value">∞</span>
+        <div>Zážitků</div>
+    </div>
+</div>
+
+<div class="galerie" id="galerie"></div>
+
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closePhoto()">✕</span>
+
+    <div class="lightbox-wrapper">
+        <img id="lightbox-img" style="display:none;">
+        <video id="lightbox-video" controls style="display:none;"></video>
+    </div>
+</div>
+
+<script>
+const galerie = document.getElementById('galerie');
+const media = [];
+
+const videoNumbers = [20];
+
+for(let i=1;i<=20;i++){
+
+    const isVideo = videoNumbers.includes(i);
+    const src = `fotky/2023/${i}.${isVideo ? 'mp4' : 'jpeg'}`;
+
+    media.push({
+        type:isVideo ? 'video' : 'image',
+        src:src
+    });
+
+    if(isVideo){
+        const v = document.createElement('video');
+        v.src = src;
+        v.muted = true;
+        v.loop = true;
+        v.playsInline = true;
+
+        v.onmouseenter = () => v.play();
+        v.onmouseleave = () => {
+            v.pause();
+            v.currentTime = 0;
+        };
+
+        v.onclick = () => openLightbox(media.length-1);
+        galerie.appendChild(v);
+    }
+    else{
+        const img = document.createElement('img');
+        img.src = src;
+        img.onclick = () => openLightbox(media.length-1);
+        galerie.appendChild(img);
+    }
+}
+
+function openLightbox(i){
+    document.getElementById("lightbox").style.display = "flex";
+
+    const m = media[i];
+
+    if(m.type === 'video'){
+        const video = document.getElementById("lightbox-video");
+        video.src = m.src;
+        video.style.display = 'block';
+        video.play();
+    }
+    else{
+        const img = document.getElementById("lightbox-img");
+        img.src = m.src;
+        img.style.display = 'block';
+    }
+}
+
+function closePhoto(){
+    document.getElementById("lightbox").style.display = "none";
+
+    const video = document.getElementById("lightbox-video");
+    video.pause();
+    video.style.display = 'none';
+
+    const img = document.getElementById("lightbox-img");
+    img.style.display = 'none';
+}
+</script>
+
+</body>
+</html>
