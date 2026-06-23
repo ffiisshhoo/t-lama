@@ -11,7 +11,7 @@
         }
         body { margin:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-color); color: var(--text-color); transition: 0.3s; }
         
-        /* HLAVIČKA S VODOZNAKEM */
+        /* --- MODERNÍ HLAVIČKA --- */
         header { background: linear-gradient(135deg, var(--header-bg), #1a73e8); color: white; padding: 60px 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); position: relative; }
         header h1 { margin: 0; font-size: 3.5rem; letter-spacing: 2px; text-transform: uppercase; text-shadow: 2px 4px 6px rgba(0,0,0,0.3); }
         header::after { content: "OTAVA 2022"; position: absolute; top: 10px; right: 20px; font-size: 0.8rem; opacity: 0.3; pointer-events: none; }
@@ -29,6 +29,7 @@
         
         .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 40px auto; }
         .stat-card { background: var(--box-bg); padding: 25px; border-radius: 20px; text-align: center; box-shadow: var(--card-shadow); transition: 0.3s; }
+        .stat-card:hover { transform: translateY(-10px); }
         .value { font-size: 32px; font-weight: bold; color: #f4b400; display: block; }
         
         .galerie { column-count: 4; column-gap: 20px; width: 100%; margin-top: 40px; }
@@ -65,26 +66,30 @@
         <p>V pátek jsme se autobusem přesunuli do <strong>Sušice</strong>, kde jsme si v půjčovně <strong>SAMBA</strong> vyzvedli naše již oblíbené rafty. Poté jsme se vydali po proudu řeky směrem k <strong>Horažďovicím</strong>, kde už na nás večer čekal náš autobus a odvezl nás zpět do kempu.</p>
         
         <h3>💪 Spartakiádní vložka</h3>
-        <p>Sobotní ráno začalo netradičně. Mužská část výpravy předvedla menší spartakiádní vystoupení, které pobavilo nejen přítomné, ale nejspíš i všechny kolemjdoucí.</p>
+        <p>Sobotní ráno začalo netradičně. Mužská část výpravy předvedla menší spartakiádní vystoupení, které pobavilo nejen přítomné, ale nejspíš i všechny kolemjdoucí. Poté jsme se autobusem přesunuli zpět do Horažďovic, kde na nás čekaly zaparkované lodě, a vydali jsme se po řece směrem k našemu stanovému městečku v Katovicích.</p>
         
         <h3>📷 Nehoda roku</h3>
-        <p>Při tradičním pleskání pádlem o vodu se moje <strong>GoPro poroučela ke dnu řeky</strong> a už ji nikdo nikdy nespatřil.</p>
+        <p>Bohužel právě během této plavby došlo k jedné nezapomenutelné události. Při tradičním pleskání pádlem o vodu se moje <strong>GoPro poroučela ke dnu řeky</strong> a už ji nikdo nikdy nespatřil. Spolu s ní zmizela i velká část fotek a videí z celé akce.</p>
         
         <div class="fun-fact">
             <h3>🕯️ Legenda roku 2022</h3>
             <p>Na dně řeky Otavy dodnes odpočívá jedna statečná kamera <strong>GoPro</strong>, která obětovala svůj život pro vodáckou zábavu.</p>
+            <p><em>Čest její památce. 🌊📷</em></p>
         </div>
         
-        <p><strong>I když nám Otava vzala GoPro, vzpomínky nám naštěstí vzít nedokázala. 🚣🍺☀️</strong></p>
+        <h3>🌞 Poslední den</h3>
+        <p>V neděli jsme vstali, sbalili stany, naložili bagáž do autobusu a vydali se na poslední etapu plavby z <strong>Katovic do vodáckého kempu Slaník</strong>, kde už na nás čekal náš věrný autobus. Počasí nám opět vyšlo na jedničku a plní zážitků, dojmů a nových vzpomínek jsme se vrátili zpět do naší ulice.</p>
+        
+        <p style="text-align:center;font-size:1.2em;"><strong>I když nám Otava vzala GoPro, vzpomínky nám naštěstí vzít nedokázala. 🚣🍺☀️</strong></p>
     </div>
 
     <div class="mapa"><img src="fotky/2022/mapa.png" alt="Mapa plavby"></div>
 
     <div class="stats-container">
-        <div class="stat-card"><span class="value">4</span><div>Dny na vodě</div></div>
-        <div class="stat-card"><span class="value">50+</span><div>Ujetých km</div></div>
-        <div class="stat-card"><span class="value">1</span><div>Autobus</div></div>
-        <div class="stat-card"><span class="value">X</span><div>Sudů</div></div>
+        <div class="stat-card"><span class="value">4</span><div class="label">Dny na vodě</div></div>
+        <div class="stat-card"><span class="value">50+</span><div class="label">Ujetých km</div></div>
+        <div class="stat-card"><span class="value">1</span><div class="label">Autobus</div></div>
+        <div class="stat-card"><span class="value">X</span><div class="label">Sudů</div></div>
     </div>
 
     <div class="galerie" id="galerie"></div>
@@ -139,11 +144,11 @@
         const v = document.getElementById("lightbox-video");
         const img = document.getElementById("lightbox-img");
         
+        v.pause(); v.style.display = 'none'; img.style.display = 'none';
+        
         if(m.type === 'video') {
-            img.style.display = 'none';
             v.src = m.src; v.style.display = 'block'; v.play();
         } else {
-            v.style.display = 'none'; v.pause();
             img.src = m.src; img.style.display = 'block';
         }
     }
@@ -158,8 +163,8 @@
 
     function closePhoto() {
         document.getElementById("lightbox").style.display = "none";
-        document.getElementById("lightbox-video").pause();
-        document.getElementById("lightbox-video").style.display = 'none';
+        const v = document.getElementById("lightbox-video");
+        v.pause(); v.currentTime = 0; v.style.display = 'none';
         document.getElementById("lightbox-img").style.display = 'none';
     }
 </script>
