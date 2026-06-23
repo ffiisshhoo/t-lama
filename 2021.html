@@ -148,43 +148,41 @@ footer{
 .prev{ left:20px; }
 .next{ right:20px; }
 
-/* --- CHYTRÝ VODOZNAK PŘÍMO Z OBRÁZKU --- */
+/* --- OPRAVENÝ VODOZNAK: PROTI STRACENÍ V ČERNÉM POZADÍ --- */
 .watermark {
     position: absolute;
     text-align: center;
     pointer-events: none;
-    z-index: 10;
+    z-index: 99999; /* Pojistka, aby byl vždy navrchu před fotkou */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.8); /* Jemný bílý podklad, aby logo na tmavé fotce vyniklo */
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.9)); /* Stín pro čitelnost na světlém podkladu */
 }
 
 .watermark img {
-    width: 110px;
+    width: 120px;
     height: auto;
-    /* Tento řádek zajistí, že bílé pozadí z obrázku loga zmizí a zbyde jen černá lama a text */
-    mix-blend-mode: multiply; 
+    /* KOUZLO: Invertuje černobílé logo na bíločerné a 'screen' smaže černou. Výsledkem je čistě bílá lama! */
+    filter: invert(1);
+    mix-blend-mode: screen;
 }
 
 .watermark .river-title {
-    color: #0b4f6c; /* Ladí s barvou hlavičky webu */
+    color: white; 
     font-size: 16px;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-top: 5px;
     font-family: Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 @media (max-width:700px){
     header h1{ font-size:36px; }
     .close, .prev, .next{ font-size:40px; }
-    .watermark { padding: 6px; }
-    .watermark img { width: 75px; }
+    .watermark img { width: 80px; }
     .watermark .river-title { font-size: 12px; letter-spacing: 1px; }
 }
 </style>
@@ -362,3 +360,6 @@ document.addEventListener("keydown", function(e){
     }
 });
 </script>
+
+</body>
+</html>
