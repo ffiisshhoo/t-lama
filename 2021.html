@@ -13,11 +13,11 @@
     --card-bg: #ffffff;
     --primary: #0b4f6c;
     --primary-hover: #146b8c;
-    --accent: #ff9f1c; /* Veselá oranžová na detaily */
+    --accent: #ff9f1c; /* Veselá oranžová */
     --shadow: rgba(11, 79, 108, 0.1);
 }
 
-/* Styly pro Temný Režim (Noční kemp u ohně) */
+/* Tmavý režim (Noční kemp) */
 [data-theme="dark"] {
     --bg-color: #121e24; 
     --text-color: #e0e7e9;
@@ -34,7 +34,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.4s, color 0.4s;
-    /* Jemný vzor vlnek na pozadí pro oživení webu */
+    /* Jemný vzor vlnek na pozadí */
     background-image: radial-gradient(circle at 100% 150%, transparent 24%, rgba(11, 79, 108, 0.03) 24%, rgba(11, 79, 108, 0.03) 28%, transparent 28%, transparent),
                       radial-gradient(circle at 0% 150%, transparent 24%, rgba(11, 79, 108, 0.03) 24%, rgba(11, 79, 108, 0.03) 28%, transparent 28%, transparent);
     background-size: 40px 40px;
@@ -46,7 +46,6 @@ header {
     padding: 60px 20px;
     text-align: center;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
@@ -69,7 +68,6 @@ header p {
     border-radius: 20px;
 }
 
-/* Animace houpání lodičky v nadpisu */
 @keyframes houpani {
     0% { transform: rotate(-2deg) translateY(0); }
     100% { transform: rotate(2deg) translateY(-5px); }
@@ -107,7 +105,6 @@ header p {
     line-height: 1.8;
     margin-bottom: 40px;
     border-bottom: 5px solid var(--accent);
-    transition: background-color 0.4s;
 }
 
 .text h2 {
@@ -118,10 +115,9 @@ header p {
 
 .text p {
     font-size: 18px;
-    margin-bottom: 20px;
 }
 
-/* --- DYNAMICKÉ STATISTIKY (POČÍTADLA) --- */
+/* --- STATISTIKY --- */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -143,44 +139,14 @@ header p {
     transform: translateY(-8px) scale(1.02);
 }
 
-.stat-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-    display: block;
-}
+.stat-icon { font-size: 40px; margin-bottom: 10px; display: block; }
+.stat-number { font-size: 36px; font-weight: bold; color: var(--accent); display: block; margin-bottom: 5px; }
+.stat-label { font-size: 16px; font-weight: 500; opacity: 0.8; }
 
-.stat-number {
-    font-size: 36px;
-    font-weight: bold;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 5px;
-}
+.mapa { text-align: center; margin-bottom: 40px; }
+.mapa img { width: 100%; max-width: 1000px; border-radius: 24px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
 
-.stat-label {
-    font-size: 16px;
-    font-weight: 500;
-    opacity: 0.8;
-}
-
-.mapa {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.mapa img {
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 24px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s;
-}
-
-.mapa img:hover {
-    transform: scale(1.01);
-}
-
-/* --- PINTEREST GALERIE (BEZPEČNÁ FADE-IN ANIMACE) --- */
+/* --- PINTEREST GALERIE (BEZ SCHOVÁVÁNÍ) --- */
 .galerie {
     columns: 4 280px;
     column-gap: 20px;
@@ -197,41 +163,19 @@ header p {
     margin-bottom: 20px;
     display: block;
     break-inside: avoid;
-    
-    /* Výchozí stav pro plynulé načítání scrollem (bezpečné hodnoty, aby fotky nezmizely) */
-    transition: 0.3s transform, 0.3s box-shadow, 0.5s opacity;
-    opacity: 1; 
-}
-
-/* Třída pro schování před doscrolováním */
-.galerie img.loading-effect,
-.galerie video.loading-effect {
-    opacity: 0.1;
-    transform: translateY(20px);
-}
-
-/* Třída pro plné zobrazení po doscrolování */
-.galerie img.visible,
-.galerie video.visible {
-    opacity: 1;
-    transform: translateY(0);
+    transition: 0.3s transform, 0.3s box-shadow;
+    opacity: 1 !important; /* Natvrdu viditelné od začátku */
 }
 
 .galerie img:hover,
 .galerie video:hover {
-    transform: scale(1.04) translateY(-3px) !important;
+    transform: scale(1.04) translateY(-3px);
     box-shadow: 0 10px 25px rgba(11, 79, 108, 0.3);
 }
 
-footer {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-color);
-    opacity: 0.8;
-    font-weight: 500;
-}
+footer { text-align: center; padding: 40px; color: var(--text-color); opacity: 0.8; font-weight: 500; }
 
-/* --- PLOVOUCÍ TLAČÍTKO TEMNÉHO REŽIMU --- */
+/* Plovoucí tlačítko */
 .theme-switch {
     position: fixed;
     bottom: 30px;
@@ -251,10 +195,7 @@ footer {
     transition: transform 0.2s;
     user-select: none;
 }
-
-.theme-switch:hover {
-    transform: scale(1.1) rotate(15deg);
-}
+.theme-switch:hover { transform: scale(1.1) rotate(15deg); }
 
 /* --- LIGHTBOX MODAL --- */
 .lightbox {
@@ -268,7 +209,7 @@ footer {
     background: rgba(0, 0, 0, 0.96);
     justify-content: center;
     align-items: center;
-    touch-action: none; /* Pro správný swipe na mobilech */
+    touch-action: none;
 }
 
 .lightbox-wrapper {
@@ -289,12 +230,10 @@ footer {
     object-fit: contain; 
     border-radius: 12px;
     display: none;
-    transition: transform 0.2s ease-out; /* Pro vizuální odezvu prstu */
+    transition: transform 0.2s ease-out;
 }
 
-.close,
-.prev,
-.next {
+.close, .prev, .next {
     position: absolute;
     color: white;
     font-size: 50px;
@@ -310,7 +249,6 @@ footer {
 .prev { left: 20px; }
 .next { right: 20px; }
 
-/* --- TEXTOVÝ VODOZNAK --- */
 .watermark {
     position: absolute;
     text-align: center;
@@ -334,7 +272,7 @@ footer {
 @media (max-width:700px){
     header h1 { font-size: 36px; }
     .close, .prev, .next { font-size: 40px; }
-    .prev, .next { display: none; } /* Na mobilu stačí swipe prstem, šipky schováme */
+    .prev, .next { display: none; } 
     .watermark .river-title { font-size: 15px; letter-spacing: 2px; }
     .theme-switch { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 22px; }
 }
@@ -342,7 +280,6 @@ footer {
 </head>
 <body>
 
-<!-- Plovoucí přepínač režimů -->
 <div class="theme-switch" id="themeBtn" onclick="toggleTheme()">🌙</div>
 
 <header>
@@ -376,7 +313,6 @@ footer {
     </p>
 </div>
 
-<!-- --- VYTUNĚNÉ STATISTIKY ROKU --- -->
 <div class="stats-grid">
     <div class="stat-card">
         <span class="stat-icon">📅</span>
@@ -404,7 +340,6 @@ footer {
     <img src="fotky/2021/mapa.png" alt="Mapa plavby">
 </div>
 
-<!-- Prázdný kontejner, který JavaScript naplní fotkami -->
 <div class="galerie" id="galerie"></div>
 
 <div style="text-align:center; margin-top: 30px;">
@@ -419,7 +354,6 @@ footer {
 🚣 Vltava 2021 • 🚌 Vlastní autobus • 🍺 Výčep • 🏕️ Zlatá Koruna
 </footer>
 
-<!-- Lightbox Okno -->
 <div id="lightbox" class="lightbox">
     <span class="close" onclick="closePhoto()">✕</span>
     <span class="prev" onclick="changePhoto(-1)">❮</span>
@@ -441,56 +375,30 @@ const galerie = document.getElementById('galerie');
 const media = []; 
 let current = 0;
 
-/* --- AUTOMATICKÉ NAČTENÍ FOTEK A VIDEA --- */
+/* --- OPRAVENÉ GENEROVÁNÍ (Hlídá přesnou příponu .jpeg podle GitHubu) --- */
 for(let i = 1; i <= 25; i++){
-    const src = `fotky/2021/${i}.jpeg`;
+    const src = `fotky/2021/${i}.jpeg`; // Zde je přesně .jpeg podle tvé složky
     media.push({ type: 'image', src: src });
 
     const img = document.createElement('img');
     img.src = src;
     img.loading = "lazy";
-    img.classList.add('loading-effect'); // Výchozí schování pro efekt animace
     img.onclick = () => openLightbox(i - 1);
     galerie.appendChild(img);
 }
 
+// Pokud ve složce 2021 nemáš video 26.mp4, tenhle blok níže můžeš smazat
 const videoSrc = 'fotky/2021/26.mp4';
 media.push({ type: 'video', src: videoSrc });
 
 const video = document.createElement('video');
 video.src = videoSrc;
 video.preload = "metadata";
-video.classList.add('loading-effect');
 video.onclick = () => openLightbox(media.length - 1);
 galerie.appendChild(video);
 
 
-/* --- OPRAVENÁ A BEZPEČNÁ SCROLL ANIMACE --- */
-const nactiPrvkyScrollem = () => {
-    const fotky = document.querySelectorAll('.galerie img, .galerie video');
-    fotky.forEach(položka => {
-        const pozicePolozky = položka.getBoundingClientRect().top;
-        const vyskaOkna = window.innerHeight || document.documentElement.clientHeight;
-        
-        // Pokud je fotka vidět v okně (s rezervou 100px dopředu), ukážeme ji
-        if (pozicePolozky < vyskaOkna + 100) {
-            položka.classList.add('visible');
-            položka.classList.remove('loading-effect');
-        }
-    });
-};
-
-// Hlídání scrollu, změny velikosti okna i plného načtení stránky
-window.addEventListener('scroll', nactiPrvkyScrollem);
-window.addEventListener('resize', nactiPrvkyScrollem);
-window.addEventListener('load', nactiPrvkyScrollem);
-
-// Pojistky, které fotky zaručeně odkryjí hned po vygenerování stránky
-setTimeout(nactiPrvkyScrollem, 100);
-setTimeout(nactiPrvkyScrollem, 600); 
-
-
-/* --- OVLÁDÁNÍ SWIPEM (TAŽENÍM PRSTU) NA MOBILU --- */
+/* --- SWIPE (POSUNUTÍ PRSTEM) NA MOBILU --- */
 const wrapper = document.getElementById('lightbox-wrapper');
 let startX = 0;
 let vezaX = 0;
@@ -516,18 +424,18 @@ wrapper.addEventListener('touchend', () => {
     if (!jeTahany) return;
     jeTahany = false;
     const aktivniElement = media[current].type === 'image' ? document.getElementById("lightbox-img") : document.getElementById("lightbox-video");
-    aktivniElement.style.transform = `translateX(0px)`; // Vrátí fotku na střed
+    aktivniElement.style.transform = `translateX(0px)`;
 
     if (vezaX > 70) {
-        changePhoto(-1); // Swipe doprava -> předchozí
+        changePhoto(-1);
     } else if (vezaX < -70) {
-        changePhoto(1);  // Swipe doleva -> další
+        changePhoto(1);
     }
     vezaX = 0;
 });
 
 
-/* --- PŘEPÍNAČ TEMNÉHO REŽIMU (DARK MODE) --- */
+/* --- TEMNÝ REŽIM --- */
 function toggleTheme() {
     const aktuálníRezim = document.documentElement.getAttribute("data-theme");
     const tlacitko = document.getElementById("themeBtn");
@@ -543,7 +451,7 @@ function toggleTheme() {
 }
 
 
-/* --- DYNAMICKÉ POZICIONOVÁNÍ VODOZNAKU S LIGHTBOXEM --- */
+/* --- VODOZNAK A LIGHTBOX --- */
 function pozicionujVodoznak() {
     const activeElement = media[current].type === 'image' ? document.getElementById("lightbox-img") : document.getElementById("lightbox-video");
     const watermark = document.getElementById("watermark");
