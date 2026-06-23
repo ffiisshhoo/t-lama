@@ -10,12 +10,12 @@
 
         body { margin: 0; font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--bg); color: var(--text); transition: 0.4s; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
-        /* Widget počasí vlevo nahoře */
         .weather-widget { position: fixed; top: 10px; left: 10px; z-index: 1000; width: 200px; background: var(--card-bg); padding: 10px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         .header { text-align: center; margin: 40px 0; }
         h1 { font-size: 70px; color: var(--accent); margin: 0; }
         .podnadpis { font-size: 28px; color: var(--subtext); font-weight: bold; }
+        .info-text { font-size: 18px; color: var(--subtext); margin-top: 10px; font-style: italic; max-width: 500px; }
 
         .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; width: 90%; margin-bottom: 50px; }
         
@@ -33,7 +33,6 @@
 </head>
 <body>
 
-<!-- Počasí widget -->
 <div class="weather-widget">
     <script type="text/javascript" src="https://www.in-pocasi.cz/widget/widget.php?typ=1&mesto=plzen"></script>
 </div>
@@ -41,27 +40,28 @@
 <div class="theme-switch" id="themeBtn" onclick="toggleTheme()">🌙</div>
 
 <div class="header">
+    <img src="web_images/tlama.png" alt="T-Lama Logo" style="width: 150px; margin-bottom: 15px;">
     <h1>🦙 T-Lama</h1>
     <div class="podnadpis">z Podmezí</div>
+    <p class="info-text">Parta přátel z jedné ulice a blízkého okolí, co každý rok spolu vyráží na vodu.</p>
 </div>
 
 <div class="container">
-    <!-- Praktické odkazy -->
     <div class="rok-card"><a href="https://www.vodackanavigace.cz/" target="_blank">🛶 Vodácká navigace</a></div>
     <div class="rok-card"><a href="https://www.chmi.cz/" target="_blank">☀️ Předpověď počasí</a></div>
+    <div class="rok-card"><a href="https://www.raft.cz/sjezdnost.aspx" target="_blank">🌊 Sjízdnost řek (Raft.cz)</a></div>
 
-    <!-- Tabulka stavů -->
     <div class="rok-card" style="grid-column: 1 / -1; cursor: default;">
         <h3>Stav našich oblíbených toků</h3>
         <table>
             <tr><th>Řeka</th><th>Stav</th></tr>
             <tr><td>Vltava</td><td style="color: green;">✔ Sjízdná</td></tr>
             <tr><td>Berounka</td><td style="color: green;">✔ Sjízdná</td></tr>
+            <tr><td>Otava</td><td style="color: green;">✔ Sjízdná</td></tr>
             <tr><td>Ohře</td><td style="color: orange;">⚠ Omezený průtok</td></tr>
         </table>
     </div>
 
-    <!-- Historie plaveb -->
     <div class="rok-card"><a href="2020.html">2020 – Berounka</a></div>
     <div class="rok-card"><a href="2021.html">2021 – Vltava</a></div>
     <div class="rok-card"><a href="2022.html">2022 – Otava</a></div>
