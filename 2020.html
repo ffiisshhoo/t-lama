@@ -6,58 +6,123 @@
 <title>Berounka 2020</title>
 
 <style>
-body {
-    margin: 0;
+body{
+    margin:0;
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    display: flex;
-    justify-content: center;
+    background: #fcfbfa; /* Jemný přírodní teplý podklad */
+    color: #3e3a35;
+}
+
+header{
+    background: #284635; /* Tmavá lesní zelená místo vltavské modré */
+    color: #f7f4eb;
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 4px solid #8ba88f; /* Mechově zelený akcent */
+}
+
+header h1{
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif; /* Elegantní trampsko-dobrodružné písmo */
+    font-size: 52px;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 18px;
+    color: #c2d3c6;
+    margin-top: 10px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
     padding: 20px;
 }
 
-.container {
-    background: white;
-    max-width: 900px;
-    width: 100%;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
-h1 {
-    color: #6a513a;
-    font-size: 42px;
-}
-
-p {
-    font-size: 24px;
-    line-height: 1.7;
-}
-
-.galerie {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.galerie img {
-    width: 250px;
-    max-width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    cursor: pointer;
+.back-button{
+    display: inline-block;
+    background: #513829; /* Teplá dřevitá hnědá */
+    color: #f7f4eb;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* Kulatější "outdoor" tlačítko */
+    margin: 20px 0;
+    font-weight: bold;
+    letter-spacing: 0.5px;
     transition: 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.galerie img:hover {
-    transform: scale(1.03);
+.back-button:hover{
+    background: #284635; /* Při najetí zzelená */
 }
 
-/* Zobrazení fotky přes celou obrazovku */
-.lightbox {
+.text{
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(40,70,53,0.08); /* Jemný zelenkavý stín */
+    line-height: 1.8;
+    margin-bottom: 40px;
+    border-left: 5px solid #513829; /* Hnědý dekorativní pruh */
+}
+
+.text h2 {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #284635;
+    margin-top: 0;
+}
+
+.text p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+h3 {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #284635;
+    font-size: 26px;
+    margin-top: 40px;
+}
+
+/* --- PINTEREST STYL GALERIE (MASONRY) --- */
+.galerie {
+    columns: 4 280px;
+    column-gap: 20px;
+}
+
+.galerie img,
+.galerie video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+    break-inside: avoid;
+}
+
+.galerie img:hover,
+.galerie video:hover{
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(40,70,53,0.2);
+}
+
+footer{
+    text-align: center;
+    padding: 40px;
+    color: #555;
+    background: #eae6df;
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+/* --- LIGHTBOX MODAL --- */
+.lightbox{
     display: none;
     position: fixed;
     z-index: 9999;
@@ -65,226 +130,226 @@ p {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.92);
+    background: rgba(18, 26, 22, 0.96); /* Temně lesní pozadí místo čisté černé */
     justify-content: center;
     align-items: center;
 }
 
-/* Kontejner, který drží fotku a vodoznak pohromadě */
-.lightbox-content {
+.lightbox-wrapper{
     position: relative;
-    max-width: 90%;
-    max-height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    height: 85%;
 }
 
-.lightbox-content img {
+.lightbox img,
+.lightbox video{
     max-width: 100%;
-    max-height: 85vh;
-    border-radius: 15px;
-    display: block;
-}
-
-/* Styl pro vodoznak v pravém dolním rohu fotky */
-.watermark {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0.6; /* Průhlednost vodoznaku */
-    pointer-events: none; /* Aby vodoznak nepřekážel klikání */
-    user-select: none;
-}
-
-.watermark img {
-    width: 60px; /* Velikost loga lamy */
+    max-height: 100%;
+    width: auto;
     height: auto;
-    margin-bottom: 5px;
-    box-shadow: none; /* Odstranění stínu pro logo */
-    border-radius: 0;
-}
-
-.watermark span {
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    font-family: Arial, sans-serif;
+    object-fit: contain; 
+    border-radius: 8px;
+    display: none;
 }
 
 .close,
 .prev,
-.next {
+.next{
     position: absolute;
-    color: white;
+    color: #f7f4eb;
     font-size: 50px;
     cursor: pointer;
     user-select: none;
+    z-index: 10000;
+    transition: 0.2s;
 }
 
-.close {
-    top: 20px;
-    right: 30px;
+.close:hover, .prev:hover, .next:hover { color: #8ba88f; }
+.close{ top: 20px; right: 30px; }
+.prev{ left: 20px; }
+.next{ right: 20px; }
+
+/* --- NOVÝ STYL TEXTOVÉHO VODOZNAKU --- */
+.watermark {
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(40, 70, 53, 0.4); /* Poloprůhledné lesní pozadí pod textem */
+    padding: 6px 16px;
+    border-radius: 4px;
+    backdrop-filter: blur(2px); /* Mírné rozmazání podkladu */
+    border-bottom: 2px solid rgba(255,255,255,0.4);
 }
 
-.prev {
-    left: 20px;
+.watermark .river-title {
+    color: #ffffff; 
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 5px; /* Větší rozestupy mezi písmeny */
+    font-family: "Georgia", serif;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-.next {
-    right: 20px;
-}
-
-.buttons {
-    margin-top: 40px;
-}
-
-.tlacitko {
-    display: inline-block;
-    margin: 10px;
-    background: #c86ca0;
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 15px;
-    font-size: 22px;
-}
-
-.tlacitko:hover {
-    background: #b45a8d;
-}
-
-@media (max-width: 700px) {
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    p {
-        font-size: 20px;
-    }
-
-    .galerie img {
-        width: 100%;
-    }
-
-    .close,
-    .prev,
-    .next {
-        font-size: 40px;
-    }
-
-    .watermark img {
-        width: 45px; /* Menší logo na mobilech */
-    }
-    
-    .watermark span {
-        font-size: 11px;
-    }
+@media (max-width:700px){
+    header h1{ font-size: 36px; }
+    .close, .prev, .next{ font-size: 40px; }
+    .watermark { padding: 4px 10px; }
+    .watermark .river-title { font-size: 13px; letter-spacing: 3px; }
 }
 </style>
 </head>
-
 <body>
+
+<header>
+    <h1>🛶 Berounka 2020</h1>
+    <p>Tady to všechno začalo... 🦙</p>
+</header>
 
 <div class="container">
 
-<h1>🛶 Berounka 2020</h1>
+<a href="index.html" class="back-button">
+    ← Zpět na přehled plaveb
+</a>
 
-<p>
-Tady to všechno začalo. 🦙
-</p>
-
-<p>
-Pro většinu z nás, a hlavně pro děti, to byla první voda v životě.
-Nikdo tehdy netušil, že z jedné plavby vznikne tradice,
-která nás bude každý rok znovu dávat dohromady.
-</p>
-
-<p>
-Bylo hodně smíchu, první vodácké zkušenosti,
-pár mokrých bot, trochu strachu z jezů
-a hlavně spousta krásných vzpomínek.
-</p>
-
-<p>
-Právě na Berounce se zrodila naše parta
-<strong>T-Lama z Podmezí</strong>
-a začalo dobrodružství, které pokračuje dodnes.
-❤️🛶🦙
-</p>
-
-<h2>📸 Fotky z plavby</h2>
-
-<div class="galerie">
-    <img src="./fotky/2020/foto1.jpeg" onclick="openPhoto(0)">
-    <img src="./fotky/2020/foto2.jpeg" onclick="openPhoto(1)">
-    <img src="./fotky/2020/foto3.jpeg" onclick="openPhoto(2)">
+<div class="text">
+    <h2>První společná voda</h2>
+    <p>
+    Pro většinu z nás, a hlavně pro děti, to byla první voda v životě.
+    Nikdo tehdy netušil, že z jedné plavby vznikne tradice,
+    která nás bude každý rok znovu dávat dohromady.
+    </p>
+    <p>
+    Bylo hodně smíchu, první vodácké zkušenosti,
+    pár mokrých bot, trochu strachu z jezů
+    a hlavně spousta krásných vzpomínek.
+    </p>
+    <p>
+    Právě na Berounce se zrodila naše parta
+    <strong>T-Lama z Podmezí</strong>
+    a začalo dobrodružství, které pokračuje dodnes.
+    ❤️🛶🦙
+    </p>
 </div>
 
-<div class="buttons">
-    <a class="tlacitko" href="index.html">← Zpět na přehled plaveb</a>
+<h3>📸 Fotky z plavby</h3>
+
+<div class="galerie" id="galerie">
+    <img src="./fotky/2020/foto1.jpeg" onclick="openLightbox(0)" loading="lazy">
+    <img src="./fotky/2020/foto2.jpeg" onclick="openLightbox(1)" loading="lazy">
+    <img src="./fotky/2020/foto3.jpeg" onclick="openLightbox(2)" loading="lazy">
+</div>
+
+<div style="text-align:center; margin-top: 40px;">
+    <a href="index.html" class="back-button">
+        ← Zpět na přehled plaveb
+    </a>
 </div>
 
 </div>
 
-<!-- Upravený Lightbox s obalem pro fotku a vodoznak -->
+<footer>
+🌿 Berounka 2020 • 🦙 T-Lama z Podmezí • Vzpomínky, které neodnese proud
+</footer>
+
 <div id="lightbox" class="lightbox">
     <span class="close" onclick="closePhoto()">✕</span>
     <span class="prev" onclick="changePhoto(-1)">❮</span>
-    
-    <div class="lightbox-content">
-        <img id="lightbox-img">
-        <!-- Vodoznak -->
-        <div class="watermark">
-            <img src="web_images/logo-lama.png" alt="Logo Lama">
-            <span>Berounka 2020</span>
+
+    <div class="lightbox-wrapper">
+        <img id="lightbox-img" alt="Fotka">
+        <video id="lightbox-video" controls style="display:none;"></video>
+
+        <div id="watermark" class="watermark">
+            <div class="river-title">Berounka 2020</div>
         </div>
     </div>
-    
+
     <span class="next" onclick="changePhoto(1)">❯</span>
 </div>
 
 <script>
-const photos = [
-    "./fotky/2020/foto1.jpeg",
-    "./fotky/2020/foto2.jpeg",
-    "./fotky/2020/foto3.jpeg"
-];
+const media = [
+    { type: 'image', src: './fotky/2020/foto1.jpeg' },
+    { type: 'image', src: './fotky/2020/foto2.jpeg' },
+    { type: 'image', src: './fotky/2020/foto3.jpeg' }
+]; 
 
 let current = 0;
 
-function openPhoto(i) {
+function pozicionujVodoznak() {
+    const activeElement = media[current].type === 'image' ? document.getElementById("lightbox-img") : document.getElementById("lightbox-video");
+    const watermark = document.getElementById("watermark");
+    
+    if (activeElement && activeElement.style.display !== 'none') {
+        setTimeout(() => {
+            const rect = activeElement.getBoundingClientRect();
+            const wrapperRect = activeElement.parentElement.getBoundingClientRect();
+            
+            const rightPos = wrapperRect.right - rect.right + 25;
+            const bottomPos = wrapperRect.bottom - rect.bottom + 25;
+            
+            watermark.style.right = `${rightPos}px`;
+            watermark.style.bottom = `${bottomPos}px`;
+        }, 50);
+    }
+}
+
+function updateLightboxContent() {
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxVideo = document.getElementById("lightbox-video");
+    const currentMedia = media[current];
+
+    lightboxImg.style.display = 'none';
+    lightboxVideo.style.display = 'none';
+    if(lightboxVideo.src) lightboxVideo.pause();
+
+    if (currentMedia.type === 'image') {
+        lightboxImg.src = currentMedia.src;
+        lightboxImg.style.display = 'block';
+    } else if (currentMedia.type === 'video') {
+        lightboxVideo.src = currentMedia.src;
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.play();
+    }
+    
+    pozicionujVodoznak();
+}
+
+function openLightbox(i){
     current = i;
     document.getElementById("lightbox").style.display = "flex";
-    document.getElementById("lightbox-img").src = photos[current];
+    updateLightboxContent();
 }
 
-function closePhoto() {
+function closePhoto(){
     document.getElementById("lightbox").style.display = "none";
+    const lightboxVideo = document.getElementById("lightbox-video");
+    if(lightboxVideo.src) lightboxVideo.pause();
 }
 
-function changePhoto(step) {
+function changePhoto(step){
     current += step;
-
-    if (current < 0) current = photos.length - 1;
-    if (current >= photos.length) current = 0;
-
-    document.getElementById("lightbox-img").src = photos[current];
+    if(current < 0) current = media.length - 1;
+    if(current >= media.length) current = 0;
+    updateLightboxContent();
 }
 
-document.addEventListener("keydown", function(e) {
-    if (document.getElementById("lightbox").style.display === "flex") {
-        if (e.key === "ArrowLeft") changePhoto(-1);
-        if (e.key === "ArrowRight") changePhoto(1);
-        if (e.key === "Escape") closePhoto();
+window.addEventListener('resize', pozicionujVodoznak);
+
+document.addEventListener("keydown", function(e){
+    if(document.getElementById("lightbox").style.display === "flex"){
+        if(e.key === "ArrowLeft") changePhoto(-1);
+        if(e.key === "ArrowRight") changePhoto(1);
+        if(e.key === "Escape") closePhoto();
     }
 });
 </script>
