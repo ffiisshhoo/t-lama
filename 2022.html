@@ -1,106 +1,244 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otava 2022</title>
+
 <style>
-.story{
-    max-width:900px;
-    margin:40px auto;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
+    color:#333;
+}
+
+header{
+    background:#0b4f6c;
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:48px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
     padding:20px;
-    line-height:1.8;
-    font-size:18px;
+}
+
+.back-button{
+    display:inline-block;
+    background:#0b4f6c;
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:10px;
+    margin:20px 0;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.back-button:hover{
+    background:#146b8c;
+}
+
+.text {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.story {
+    max-width: 900px;
+    margin: 10px auto;
+    font-size: 18px;
 }
 
 .story h2,
-.story h3{
-    color:#0b5ed7;
+.story h3 {
+    color: #0b5ed7;
+    margin-top: 30px;
 }
 
-.fun-fact{
-    background:#fff8e1;
-    border-left:6px solid #f4b400;
-    padding:20px;
-    margin:30px 0;
-    border-radius:12px;
+.story h2:first-of-type {
+    margin-top: 10px;
+}
+
+.fun-fact {
+    background: #fff8e1;
+    border-left: 6px solid #f4b400;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 12px;
+}
+
+.fun-fact h3 {
+    color: #f4b400 !important;
+    margin-top: 0;
+}
+
+.mapa{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.mapa img{
+    width:100%;
+    max-width:1000px;
+    border-radius:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+/* --- PINTEREST STYL GALERIE --- */
+.galerie {
+    columns: 4 280px;
+    column-gap: 20px;
+}
+
+.galerie img,
+.galerie video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+    break-inside: avoid;
+}
+
+.galerie img:hover,
+.galerie video:hover{
+    transform:scale(1.03);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+
+/* --- LIGHTBOX MODAL --- */
+.lightbox{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox-wrapper{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 90%;
+    height: 85%;
+}
+
+.lightbox img,
+.lightbox video{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; 
+    border-radius:10px;
+    display: none;
+}
+
+.close,
+.prev,
+.next{
+    position:absolute;
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+    user-select:none;
+    z-index: 10000;
+}
+
+.close{ top:20px; right:30px; }
+.prev{ left:20px; }
+.next{ right:20px; }
+
+/* --- TEXTOVÝ VODOZNAK --- */
+.watermark {
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.watermark .river-title {
+    color: white; 
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-family: Arial, sans-serif;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.9));
+}
+
+@media (max-width:700px){
+    header h1{ font-size:36px; }
+    .close, .prev, .next{ font-size:40px; }
+    .watermark .river-title { font-size: 15px; letter-spacing: 2px; }
 }
 </style>
+</head>
+<body>
 
-<section class="story">
+<header>
+    <h1>🚣 Otava 2022</h1>
+    <p>21. 7. 2022 – 24. 7. 2022</p>
+</header>
 
-    <h2>🌊 Otava 2022 – ztracená GoPro a velké dobrodružství</h2>
+<div class="container">
 
-    <p>
-        Rok 2022 nás zavedl na řeku <strong>Otavu</strong>. Naší základnou se stal
-        krásný kemp <strong>Otavský ráj v Katovicích</strong>, kde jsme od
-        <strong>21. do 24. července 2022</strong> vybudovali naše malé stanové městečko.
-    </p>
+<a href="index.html" class="back-button">
+    ← Zpět na přehled plaveb
+</a>
 
-    <p>
-        Stejně jako v předchozích letech jsme vyrazili stylově –
-        <strong>soukromým autobusem přímo z naší ulice</strong>. Už samotná cesta
-        byla plná smíchu, dobré nálady a očekávání, co nám letošní plavba přinese.
-    </p>
+<div class="text">
+    <section class="story">
 
-    <h3>🚣 Den první – Sušice a cesta do Horažďovic</h3>
+        <h2>🌊 Otava 2022 – ztracená GoPro a velké dobrodružství</h2>
 
-    <p>
-        V pátek jsme se autobusem přesunuli do <strong>Sušice</strong>, kde jsme si
-        v půjčovně <strong>SAMBA</strong> vyzvedli naše již oblíbené rafty.
-        Poté jsme se vydali po proudu řeky směrem k <strong>Horažďovicím</strong>,
-        kde už na nás večer čekal náš autobus a odvezl nás zpět do kempu.
-    </p>
-
-    <h3>💪 Spartakiádní vložka</h3>
-
-    <p>
-        Sobotní ráno začalo netradičně. Mužská část výpravy předvedla menší
-        spartakiádní vystoupení, které pobavilo nejen přítomné, ale nejspíš i
-        všechny kolemjdoucí.
-    </p>
-
-    <p>
-        Poté jsme se autobusem přesunuli zpět do Horažďovic, kde na nás čekaly
-        zaparkované lodě, a vydali jsme se po řece směrem k našemu stanovému
-        městečku v Katovicích.
-    </p>
-
-    <h3>📷 Nehoda roku</h3>
-
-    <p>
-        Bohužel právě během této plavby došlo k jedné nezapomenutelné události.
-        Při tradičním pleskání pádlem o vodu se moje
-        <strong>GoPro poroučela ke dnu řeky</strong> a už ji nikdo nikdy nespatřil.
-        Spolu s ní zmizela i velká část fotek a videí z celé akce, a proto se z roku
-        2022 dochovalo jen několik málo fotografií.
-    </p>
-
-    <div class="fun-fact">
-        <h3>🕯️ Legenda roku 2022</h3>
         <p>
-            Na dně řeky Otavy dodnes odpočívá jedna statečná kamera
-            <strong>GoPro</strong>, která obětovala svůj život pro vodáckou zábavu.
+            Rok 2022 nás zavedl na řeku <strong>Otavu</strong>. Naší základnou se stal
+            krásný kemp <strong>Otavský ráj v Katovicích</strong>, kde jsme od
+            <strong>21. do 24. července 2022</strong> vybudovali naše malé stanové městečko.
         </p>
-        <p><em>Čest její památce. 🌊📷</em></p>
-    </div>
 
-    <h3>🌞 Poslední den</h3>
+        <p>
+            Stejně jako v předchozích letech jsme vyrazili stylově –
+            <strong>soukromým autobusem přímo z naší ulice</strong>. Už samotná cesta
+            byla plná smíchu, dobré nálady a očekávání, co nám letošní plavba přinese.
+        </p>
 
-    <p>
-        V neděli jsme vstali, sbalili stany, naložili bagáž do autobusu a vydali
-        se na poslední etapu plavby z <strong>Katovic do vodáckého kempu Slaník</strong>,
-        kde už na nás čekal náš věrný autobus.
-    </p>
+        <h3>🚣 Den první – Sušice a cesta do Horažďovic</h3>
 
-    <p>
-        Počasí nám opět vyšlo na jedničku a plní zážitků, dojmů a nových vzpomínek
-        jsme se vrátili zpět do naší ulice.
-    </p>
-
-    <p style="text-align:center;font-size:1.3em;margin-top:40px;">
-        <strong>
-            I když nám Otava vzala GoPro, vzpomínky nám naštěstí vzít nedokázala.
-            🚣🍺☀️
-        </strong>
-    </p>
-
-    <p style="text-align:center;color:#777;">
-        <em>Rok, kdy bylo více zážitků než fotografií. 📷😄</em>
-    </p>
-
-</section>
+        <p>
+            V pátek jsme se autobusem přesunuli do <strong>Sušice</strong>, kde jsme si
+            v půjčovně <strong>SAMBA</strong> vyzvedli naše již oblíbené rafty.
+            Poté jsme se vydali po proudu řeky směrem k <strong>Horažďovicím</strong>,
+            kde už
