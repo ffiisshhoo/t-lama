@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -6,6 +7,10 @@
 <title>Ohře 2024 – Návrat na západ</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -18,16 +23,16 @@ header{
     background:linear-gradient(135deg,#0b4f6c,#1b7fbd);
     color:white;
     text-align:center;
-    padding:70px 20px;
+    padding:80px 20px;
 }
 
 header h1{
     margin:0;
-    font-size:3rem;
+    font-size:3.5rem;
 }
 
 header p{
-    font-size:1.3rem;
+    font-size:1.4rem;
     margin-top:15px;
 }
 
@@ -42,7 +47,7 @@ header p{
     border-radius:20px;
     padding:35px;
     margin-bottom:35px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
 h2{
@@ -50,10 +55,23 @@ h2{
     margin-top:0;
 }
 
+a{
+    color:#1b7fbd;
+}
+
+blockquote{
+    background:#eef8ff;
+    border-left:5px solid #1b7fbd;
+    margin:30px 0;
+    padding:20px;
+    border-radius:10px;
+    font-style:italic;
+}
+
 .mapa{
     width:100%;
     border-radius:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 .posadky{
@@ -62,28 +80,29 @@ h2{
     gap:20px;
 }
 
-.posadka-box{
-    background:#f8f8f8;
+.posadka{
+    background:#f7f7f7;
+    padding:25px;
     border-radius:15px;
-    padding:20px;
 }
 
-.posadka-box h3{
-    margin-top:0;
+.posadka h3{
     color:#1b7fbd;
+    margin-top:0;
 }
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
     gap:20px;
 }
 
 .gallery img{
     width:100%;
     border-radius:15px;
-    box-shadow:0 5px 10px rgba(0,0,0,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
     transition:0.3s;
+    cursor:pointer;
 }
 
 .gallery img:hover{
@@ -94,17 +113,31 @@ footer{
     background:#0b4f6c;
     color:white;
     text-align:center;
-    padding:30px;
+    padding:35px;
     margin-top:50px;
 }
 
-blockquote{
-    background:#eef8ff;
-    border-left:5px solid #1b7fbd;
-    margin:25px 0;
-    padding:20px;
-    border-radius:10px;
-    font-style:italic;
+.lightbox{
+    display:none;
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:95%;
+    border-radius:15px;
+}
+
+.lightbox.active{
+    display:flex;
 }
 </style>
 </head>
@@ -122,73 +155,74 @@ blockquote{
         <h2>12.–14. července 2024</h2>
 
         <p>
-            Letos jsme se rozhodli vyzkoušet další krásnou českou řeku – Ohři.
-            Po společné dohodě jsme si tentokrát udělali pouze víkendovou akci,
-            která se uskutečnila od 12. do 14. července 2024.
+            Letos jsme se rozhodli vyzkoušet další krásnou řeku a to Ohři.
+            Po společné dohodě jsme si udělali pouze víkendovou akci od pátku
+            12. července do neděle 14. července 2024.
         </p>
 
         <p>
-            Kemp jsme pečlivě vybírali a nakonec naše volba padla na
-            <a href="https://naspici.net/" target="_blank">Kemp Na Špici</a>.
-            V pátek po práci jsme vyrazili směr Karlovarský kraj a naše víkendové tábořiště.
+            Kemp jsme pečlivě vybírali a nakonec jsme skončili v
+            <a href="https://naspici.net/" target="_blank">
+                Kempu Na Špici
+            </a>.
         </p>
 
         <p>
-            Přesně ve chvíli, kdy jsme dorazili do kempu, ani jsme nestihli vystoupit z aut,
-            přišla pořádná bouřka. Tak jsme si na téměř půl hodiny udělali pohodlí v autech
-            a čekali, až se počasí umoudří. Naštěstí se brzy znovu ukázalo sluníčko
-            a my mohli začít stavět stany.
+            V pátek po práci jsme vyrazili směr Karlovarský kraj a naše tábořiště.
+            Přesně při příjezdu do kempu jsme ani nestihli vystoupit z auta a přišla
+            pořádná bouřka. Tak jsme si dali skoro půl hodinky pauzu v autech.
+            Naštěstí se poté znovu ukázalo sluníčko a my mohli začít stavět stany.
         </p>
 
         <p>
-            Po zabydlení jsme se vydali do místní restaurace na večeři.
-            Mnozí z nás byli nadšeni, když v jídelním lístku objevili opravdovou retro klasiku –
+            Poté jsme se vydali do místní restaurace na večeři. Mnozí z nás byli
+            nadšeni, protože v menu nalezli retro klasiku –
             <strong>kuřecí plátek s broskví a sýrem.</strong>
-            Po večeři jsme ještě chviličku poseděli a poté se odebrali do svých stanů.
+            Po večeři jsme ještě chviličku poseděli a šli na kutě.
         </p>
 
         <p>
-            Ráno nás čekal přesun dvěma auty do Karlových Varů, odkud jsme si usmysleli
-            splout řeku zpět do našeho kempu. Všech pět našich plastových AGARů krásně
-            kopírovalo tok řeky a my si začali naplno užívat, jak nádherná řeka Ohře vlastně je.
-            Jezy, peřeje a úsek Hubertus – prostě naprostá pecka!
+            Ráno nás čekal přesun dvěma auty do Karlových Varů, odkud jsme vypluli
+            zpátky do našeho kempu. Všech pět našich plastových AGARů krásně
+            kopírovalo tok řeky a hlavně – Ohře je opravdu nádherná řeka.
+            Jezy, peřeje, úsek Hubertus… prostě pecka.
+        </p>
+
+        <p>
+            Cestou se dokonce jedna posádka pěkně vykoupala a někomu se utopilo
+            naše epesní modré tričko.
         </p>
 
         <blockquote>
-            „Háček musí hlásit! A když nevidí kameny, je to většinou špatné…“
+            Háček musí hlásit… a když nevidí kameny, je to špatné!
         </blockquote>
 
         <p>
-            Jedna z posádek si cestou dopřála neplánovanou koupel a někde v proudu
-            skončilo i naše epesní modré tričko.
+            V pozdním odpoledni jsme dopluli zpět do kempu, kde jsme vyzkoušeli
+            další nabídku jídel z místní restaurace, něco popili a domluvili se,
+            že v neděli před cestou domů zajedeme na hrad Loket.
         </p>
 
         <p>
-            V pozdním odpoledni jsme dopluli zpět do kempu, kde jsme vyzkoušeli další
-            speciality místní restaurace. Něco se vypilo, něco probralo a nakonec padlo
-            rozhodnutí, že se v neděli před cestou domů zajedeme podívat na hrad Loket.
-        </p>
-
-        <p>
-            Neděle už probíhala v tradičním duchu – sbalit stany, všechno naskládat do aut
-            a hurá na hrad. Když jsme Loket viděli z vyhlídek nad Ohří, bylo rozhodnuto:
+            No a neděle? Jako každý rok – pobalit, všechno naskládat do aut a hurá
+            na hrad. Když jsme Loket viděli zezhora, bylo rozhodnuto:
         </p>
 
         <blockquote>
-            Příští rok jedeme zase na Ohři! 🚣‍♂️
+            Příští rok jedeme zase na Ohři!
         </blockquote>
     </div>
 
     <div class="card">
-        <h2>Mapa naší výpravy</h2>
+        <h2>Mapa výpravy</h2>
 
         <img src="fotky/2024/mapa2024.png"
-             alt="Mapa plavby Ohře 2024"
+             alt="Mapa Ohře 2024"
              class="mapa">
 
         <p>
-            <strong>Sobota:</strong> plavba z Karlových Varů zpět do Kempu Na Špici.<br>
-            <strong>Neděle:</strong> výlet auty na hrad Loket před cestou domů.
+            <strong>Sobota:</strong> Karlovy Vary → Kemp Na Špici 🚣‍♂️<br>
+            <strong>Neděle:</strong> Kemp Na Špici → Hrad Loket 🚗
         </p>
     </div>
 
@@ -197,33 +231,27 @@ blockquote{
 
         <div class="posadky">
 
-            <div class="posadka-box">
+            <div class="posadka">
                 <h3>Háčkové</h3>
-                <p>
-                    Adélka<br>
-                    Evelínka<br>
-                    Laura<br>
-                    Anabelka<br>
-                    Týnka
-                </p>
+                Adélka<br>
+                Evelínka<br>
+                Laura<br>
+                Anabelka<br>
+                Týnka
             </div>
 
-            <div class="posadka-box">
+            <div class="posadka">
                 <h3>Kapitáni</h3>
-                <p>
-                    Peťa<br>
-                    Tomík<br>
-                    Janina<br>
-                    Ondra<br>
-                    Moni
-                </p>
+                Peťa<br>
+                Tomík<br>
+                Janina<br>
+                Ondra<br>
+                Moni
             </div>
 
-            <div class="posadka-box">
+            <div class="posadka">
                 <h3>Speciální člen výpravy</h3>
-                <p>
-                    A za to všechno se vezla Brigy. 😊
-                </p>
+                A za to všechno se vezla Brigy 😊
             </div>
 
         </div>
@@ -232,12 +260,7 @@ blockquote{
     <div class="card">
         <h2>Fotogalerie</h2>
 
-        <div class="gallery">
-            <img src="fotky/2024/1.jpg" alt="">
-            <img src="fotky/2024/2.jpg" alt="">
-            <img src="fotky/2024/3.jpg" alt="">
-            <img src="fotky/2024/4.jpg" alt="">
-        </div>
+        <div class="gallery" id="galerie2024"></div>
     </div>
 
 </div>
@@ -246,5 +269,31 @@ blockquote{
     🚣‍♂️ T-LAMA TEAM • Ohře 2024 – Návrat na západ 🌊
 </footer>
 
+<div class="lightbox" id="lightbox">
+    <img id="lightbox-img">
+</div>
+
+<script>
+const galerie = document.getElementById('galerie2024');
+
+for (let i = 1; i <= 49; i++) {
+    const img = document.createElement('img');
+    img.src = `fotky/2024/${i}.jpeg`;
+    img.alt = `Ohře 2024 - foto ${i}`;
+
+    img.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+    });
+
+    galerie.appendChild(img);
+}
+
+document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('active');
+});
+</script>
+
 </body>
 </html>
+```
