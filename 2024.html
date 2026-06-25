@@ -20,8 +20,7 @@
         
         h2 { color: #2980b9; }
         .mapa { width: 100%; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); margin-top: 20px; }
-        blockquote { background: #f0fdf4; border-left: 6px solid #27ae60; margin: 30px 0; padding: 25px; border-radius: 0 15px 15px 0; font-style: italic; color: #166534; }
-
+        
         /* Galerie */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
         .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; cursor: pointer; transition: 0.5s; border: 3px solid white; background-color: #eee; }
@@ -32,7 +31,6 @@
         .lightbox.active { display: flex; }
         .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
         .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 15px; border: 4px solid white; display: block; }
-        .watermark { position: absolute; bottom: 15px; right: 15px; color: rgba(255,255,255,0.6); font-weight: bold; font-size: 1.2rem; pointer-events: none; }
         
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 4rem; cursor: pointer; padding: 20px; z-index: 1001; }
         .prev { left: -60px; }
@@ -48,25 +46,10 @@
 
 <header>
     <h1>Ohře 2024</h1>
-    <p>Návrat na západ ve velkém stylu! 🚣‍♂️🌊🦙</p>
+    <p>Návrat na západ ve velkém stylu!</p>
 </header>
 
 <div class="container">
-    <div class="card">
-        <h2>12.–14. července 2024: Výprava, co nemá chybu!</h2>
-        <p>Letos jsme se rozhodli, že potřebujeme pořádný restart, a tak volba padla na Ohři. 🌊 Víkendová mise (12.–14. července) mohla začít!</p>
-        <p>Základnu jsme rozbili v legendárním <a href="https://naspici.net/" target="_blank">Kempu Na Špici</a>. Hned po příjezdu nás přivítala "osvěžující" bouřka, tak jsme si dali půl hodinky povinného networkingu v autech. ⛈️</p>
-        <p>Večerní menu? Absolutní vítěz byl jasný – retro klasika: <strong>kuřecí plátek s broskví a sýrem!</strong> Gastronomický zážitek, na který se nezapomíná. 🍑🧀</p>
-        <p>Ráno jsme vyrazili do Varů a na našich pěti plastových AGARech jsme pokořili řeku. Ohře je prostě pecka – peřeje, jezy, Hubertus... prostě řeka, která nás baví! 🛶</p>
-        <blockquote>Háček musí hlásit… a když nevidí kameny, je to špatné! (Příště si vezmeme lepší brýle!)</blockquote>
-        <p>Neděle? Pobalili jsme, naskládali věci do aut a vyrazili na hrad Loket. Když jsme stáli na hradbách a koukali dolů, bylo jasno: <blockquote>Příští rok jedeme na Ohři znovu! T-LAMA style! 🦙</blockquote></p>
-    </div>
-
-    <div class="card">
-        <h2>Mapa výpravy</h2>
-        <img src="fotky/2024/mapa2024.png" alt="Mapa Ohře 2024" class="mapa">
-    </div>
-
     <div class="card">
         <h2>Galerie</h2>
         <div class="gallery" id="galerie2024"></div>
@@ -74,12 +57,11 @@
 </div>
 
 <div class="lightbox" id="lightbox">
-    <span class="nav-btn prev" onclick="changeImage(event, -1)">❮</span>
+    <span class="nav-btn prev" onclick="changeImage(-1)">❮</span>
     <div class="lightbox-content">
         <img id="lightbox-img" src="" alt="Detail">
-        <div class="watermark">© T-LAMA TEAM</div>
     </div>
-    <span class="nav-btn next" onclick="changeImage(event, 1)">❯</span>
+    <span class="nav-btn next" onclick="changeImage(1)">❯</span>
 </div>
 
 <script>
@@ -87,17 +69,19 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     
-    // Vytvoříme seznam všech souborů, které se mají zobrazit
-    const soubory = [];
-    for(let i = 1; i <= 49; i++) soubory.push(`${i}.jpeg`);
-    for(let i = 1; i <= 34; i++) soubory.push(`b${i}.jpeg`);
+    // TADY SE TVOŘÍ SEZNAM VŠECH FOTEK
+    // První cyklus přidá 1.jpeg až 49.jpeg
+    // Druhý cyklus přidá b1.jpeg až b34.jpeg
+    const fotky = [];
+    for(let i = 1; i <= 49; i++) fotky.push(`fotky/2024/${i}.jpeg`);
+    for(let i = 1; i <= 34; i++) fotky.push(`fotky/2024/b${i}.jpeg`);
 
     let currentIndex = 0;
 
-    // Generování galerie - vloží všechny obrázky ze seznamu
-    soubory.forEach((soubor, index) => {
+    // Vložení fotek do stránky
+    fotky.forEach((cesta, index) => {
         const img = document.createElement('img');
-        img.src = `fotky/2024/${soubor}`;
+        img.src = cesta;
         img.loading = "lazy";
         img.onclick = () => { showLightbox(index); };
         galerie.appendChild(img);
@@ -105,30 +89,16 @@
 
     function showLightbox(index) {
         currentIndex = index;
-        lightboxImg.src = `fotky/2024/${soubory[currentIndex]}`;
+        lightboxImg.src = fotky[currentIndex];
         lightbox.classList.add('active');
     }
 
-    function changeImage(e, step) {
-        if(e) e.stopPropagation();
-        currentIndex += step;
-        if (currentIndex >= soubory.length) currentIndex = 0;
-        if (currentIndex < 0) currentIndex = soubory.length - 1;
-        lightboxImg.src = `fotky/2024/${soubory[currentIndex]}`;
+    function changeImage(step) {
+        currentIndex = (currentIndex + step + fotky.length) % fotky.length;
+        lightboxImg.src = fotky[currentIndex];
     }
 
-    // Zavření lightboxu kliknutím mimo obrázek
-    lightbox.onclick = (e) => { 
-        if(e.target === lightbox) lightbox.classList.remove('active'); 
-    };
-
-    // Ovládání klávesnicí
-    document.onkeydown = (e) => {
-        if(!lightbox.classList.contains('active')) return;
-        if(e.key === "ArrowRight") changeImage(null, 1);
-        if(e.key === "ArrowLeft") changeImage(null, -1);
-        if(e.key === "Escape") lightbox.classList.remove('active');
-    };
+    lightbox.onclick = (e) => { if(e.target === lightbox) lightbox.classList.remove('active'); };
 </script>
 </body>
 </html>
