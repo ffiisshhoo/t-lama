@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ohře 2025 | T-LAMA</title>
+
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
@@ -23,10 +24,10 @@
         h2 { color:#0b4f7d; margin-bottom:25px; font-size:2rem; }
         .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); }
 
-        /* TABULKA A MAPA */
-        .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); margin-bottom: 20px; }
+        /* MAPA A TABULKA */
+        .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); }
         table { width:100%; border-collapse:collapse; margin-top:20px; }
-        th { background:#0b4f7d; color:white; padding:15px; text-align: left; }
+        th { background:#0b4f7d; color:white; padding:15px; }
         td { padding:15px; border-bottom:1px solid #ddd; }
         tr:nth-child(even) { background:#f5f5f5; }
 
@@ -35,15 +36,16 @@
         .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; transition:0.3s; box-shadow:0 5px 20px rgba(0,0,0,0.2); }
         .gallery img:hover { transform:scale(1.03); }
 
-        /* LIGHTBOX */
+        /* LIGHTBOX - VZOR BEROUNKA */
         .lightbox { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
-        .lightbox img { max-width:90%; max-height:90%; border-radius:15px; }
+        .lightbox img { max-width:85%; max-height:85%; border:5px solid white; border-radius:10px; }
         .close { position:absolute; top:20px; right:35px; color:white; font-size:50px; cursor:pointer; }
+        .nav-btn { position:absolute; top:50%; color:white; font-size:40px; cursor:pointer; padding:20px; user-select:none; }
+        .prev { left:20px; }
+        .next { right:20px; }
+        .watermark { position:absolute; bottom:20px; color:rgba(255,255,255,0.4); font-size:1.2rem; pointer-events:none; }
 
-        /* FOOTER */
         footer { background:#0b4f7d; color:white; text-align:center; padding:50px 20px; margin-top:80px; }
-
-        @media(max-width:768px) { .hero h1 { font-size:2.8rem; } }
     </style>
 </head>
 <body>
@@ -59,33 +61,6 @@
     <section class="card">
         <h2>🚣‍♂️ Úvod</h2>
         <p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři!</p>
-        <p>A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze.</p>
-    </section>
-
-    <section class="card">
-        <h2>🚣 Pátek – konečně na vodě</h2>
-        <p>V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket. Naši háčkové byli skvělí, námořnická trička nám slušela a cíl vidět Loket z hladiny byl splněn!</p>
-    </section>
-
-    <section class="card">
-        <h2>🚣 Sobota – Hubertus volá</h2>
-        <p>Nejvíce jsme se těšili na Hubertus – peřeje a legendární „ogriluj si sám“. Naši nejstarší háčkové navíc zvládli plavbu na kánoi úplně sami. 🚣‍♂️👏</p>
-    </section>
-
-    <section class="card">
-        <h2>🚗 Neděle – návrat domů</h2>
-        <p>Před odjezdem jsme v Kyselce ochutnali Mattoniho pramen a pak už zamířili zpět do Třemošné. Ohře byla opět úžasná.</p>
-    </section>
-
-    <section>
-        <h2>🗺️ Trasa plavby</h2>
-        <img src="fotky/2025/mapa2025.png" class="map" alt="Mapa trasy">
-        <table>
-            <tr><th>Den</th><th>Trasa</th><th>Km</th></tr>
-            <tr><td>Pátek</td><td>Sokolov → Loket → Karlovy Vary</td><td>29 km</td></tr>
-            <tr><td>Sobota</td><td>Karlovy Vary → Radošov</td><td>15 km</td></tr>
-            <tr><td><strong>Celkem</strong></td><td></td><td><strong>44 km</strong></td></tr>
-        </table>
     </section>
 
     <section>
@@ -94,24 +69,49 @@
     </section>
 </div>
 
-<div class="lightbox" id="lightbox"><span class="close">&times;</span><img id="lightbox-img"></div>
-
-<footer>
-    <p>„Na vodě nejde o kilometry, ale o zážitky, smích a partu lidí.“</p>
-</footer>
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <div class="nav-btn prev" onclick="changeImage(-1)">&#10094;</div>
+    <img id="lightbox-img">
+    <div class="watermark">T-LAMA 2025</div>
+    <div class="nav-btn next" onclick="changeImage(1)">&#10095;</div>
+</div>
 
 <script>
+    const totalImages = 57;
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
     const gallery = document.getElementById('gallery');
-    for(let i=1; i<=57; i++){
+
+    // Generování galerie
+    for(let i=1; i<=totalImages; i++){
         const img = document.createElement('img');
         img.src = `fotky/2025/${i}.jpeg`;
-        img.onclick = () => {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = img.src;
-        };
+        img.onclick = () => { currentIndex = i-1; updateLightbox(); lightbox.style.display = 'flex'; };
         gallery.appendChild(img);
     }
-    document.querySelector('.close').onclick = () => document.getElementById('lightbox').style.display = 'none';
+
+    function updateLightbox() {
+        lightboxImg.src = `fotky/2025/${currentIndex + 1}.jpeg`;
+    }
+
+    function changeImage(step) {
+        currentIndex = (currentIndex + step + totalImages) % totalImages;
+        updateLightbox();
+    }
+
+    // Ovládání
+    document.querySelector('.close').onclick = () => lightbox.style.display = 'none';
+    document.onkeydown = (e) => {
+        if(lightbox.style.display === 'flex') {
+            if(e.key === 'ArrowLeft') changeImage(-1);
+            if(e.key === 'ArrowRight') changeImage(1);
+            if(e.key === 'Escape') lightbox.style.display = 'none';
+        }
+    };
+    lightbox.onclick = (e) => { if(e.target.id === 'lightbox') lightbox.style.display = 'none'; };
 </script>
+
 </body>
 </html>
