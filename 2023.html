@@ -8,7 +8,7 @@
         :root { --header-bg: #2f6b3f; --card-shadow: 0 8px 25px rgba(0,0,0,0.15); }
         body { margin:0; font-family:'Segoe UI', sans-serif; background: linear-gradient(135deg, #e0f7fa, #f1f8e9); color: #333; }
         
-        /* Nový horní panel (sticky) */
+        /* Horní panel (sticky) */
         .top-nav {
             position: sticky;
             top: 0;
@@ -80,28 +80,24 @@
 </div>
 
 <script>
-    const media = [];
-    
-    // 1. Původní fotky 1 až 49
-    for(let i = 1; i <= 49; i++) {
-        media.push({type: 'image', src: `fotky/2023/${i}.jpeg`});
-    }
-
-    // 2. Nové soubory ze screenshotu
-    const newMedia = [
-        {type: 'image', src: 'fotky/2023/b1.jpeg'},
-        {type: 'image', src: 'fotky/2023/b2.jpeg'},
-        {type: 'video', src: 'fotky/2023/b3.mp4'},
-        {type: 'image', src: 'fotky/2023/b4.jpeg'},
-        {type: 'image', src: 'fotky/2023/b5.jpeg'},
-        {type: 'image', src: 'fotky/2023/b6.jpeg'},
-        {type: 'image', src: 'fotky/2023/b7.jpeg'},
-        {type: 'image', src: 'fotky/2023/b8.jpeg'},
+    const media = [
+        {type: 'image', src: 'fotky/2023/1.jpeg'}, {type: 'image', src: 'fotky/2023/10.jpeg'},
+        {type: 'image', src: 'fotky/2023/11.jpeg'}, {type: 'image', src: 'fotky/2023/12.jpeg'},
+        {type: 'image', src: 'fotky/2023/13.jpeg'}, {type: 'image', src: 'fotky/2023/14.jpeg'},
+        {type: 'image', src: 'fotky/2023/15.jpeg'}, {type: 'image', src: 'fotky/2023/16.jpeg'},
+        {type: 'image', src: 'fotky/2023/17.jpeg'}, {type: 'image', src: 'fotky/2023/18.jpeg'},
+        {type: 'image', src: 'fotky/2023/19.jpeg'}, {type: 'image', src: 'fotky/2023/2.jpeg'},
+        {type: 'video', src: 'fotky/2023/20.mp4'}, {type: 'image', src: 'fotky/2023/3.jpeg'},
+        {type: 'image', src: 'fotky/2023/4.jpeg'}, {type: 'image', src: 'fotky/2023/5.jpeg'},
+        {type: 'image', src: 'fotky/2023/6.jpeg'}, {type: 'image', src: 'fotky/2023/7.jpeg'},
+        {type: 'image', src: 'fotky/2023/8.jpeg'}, {type: 'image', src: 'fotky/2023/9.jpeg'},
+        {type: 'image', src: 'fotky/2023/b1.jpeg'}, {type: 'image', src: 'fotky/2023/b2.jpeg'},
+        {type: 'video', src: 'fotky/2023/b3.mp4'}, {type: 'image', src: 'fotky/2023/b4.jpeg'},
+        {type: 'image', src: 'fotky/2023/b5.jpeg'}, {type: 'image', src: 'fotky/2023/b6.jpeg'},
+        {type: 'image', src: 'fotky/2023/b7.jpeg'}, {type: 'image', src: 'fotky/2023/b8.jpeg'},
         {type: 'video', src: 'fotky/2023/b9.mp4'}
     ];
-    media.push(...newMedia);
 
-    // Vykreslení
     const gal = document.getElementById('galerie');
     media.forEach((m, i) => {
         const d = document.createElement('div');
