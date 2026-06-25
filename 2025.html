@@ -6,36 +6,31 @@
     <title>Ohře 2025 | T-LAMA</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; }
-        body { font-family:Arial,sans-serif; background:#f5f7fa; color:#333; line-height:1.7; }
+        body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f0f2f5; color:#333; line-height:1.6; }
         
-        /* TLAČÍTKO ZPĚT - FIXNÍ NAHOŘE */
-        .sticky-back { position:fixed; top:20px; left:20px; z-index:9999; background:#0b4f7d; color:white; padding:12px 25px; border-radius:10px; text-decoration:none; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.3); }
+        .sticky-back { position:fixed; top:20px; left:20px; z-index:9999; background:#0b4f7d; color:white; padding:12px 25px; border-radius:10px; text-decoration:none; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition:0.3s; }
+        .sticky-back:hover { background:#1f7fc5; transform:scale(1.05); }
 
-        .hero { background:linear-gradient(135deg,#0b4f7d,#1f7fc5,#42b0ff); color:white; text-align:center; padding:120px 20px; border-bottom:8px solid #ffd166; }
-        .hero h1 { font-size:4rem; margin:20px 0; text-shadow:3px 3px 8px rgba(0,0,0,0.4); }
-        .container { max-width:1100px; margin:auto; padding:60px 20px; }
-        section { margin-bottom:70px; }
-        h2 { color:#0b4f7d; margin-bottom:25px; font-size:2rem; }
-        .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); margin-bottom:30px; }
-        .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); }
-        table { width:100%; border-collapse:collapse; margin-top:20px; }
-        th { background:#0b4f7d; color:white; padding:15px; }
-        td { padding:15px; border-bottom:1px solid #ddd; }
-        tr:nth-child(even) { background:#f5f5f5; }
+        .hero { background:linear-gradient(135deg,#0b4f7d,#1f7fc5); color:white; text-align:center; padding:100px 20px; }
+        .container { max-width:1100px; margin:auto; padding:40px 20px; }
+        .card { background:white; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.05); margin-bottom:40px; }
         
-        .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-        .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; }
+        /* INTERAKTIVNÍ GALERIE */
+        .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+        .gallery img { width:100%; height:200px; object-fit:cover; border-radius:15px; cursor:pointer; transition:0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .gallery img:hover { transform:scale(1.08) rotate(2deg); box-shadow:0 15px 30px rgba(0,0,0,0.2); }
         
-        /* LIGHTBOX - OPRAVENÝ VODOZNAK */
+        /* LIGHTBOX S KŘÍŽKEM */
         .lightbox { display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; }
-        .lightbox-content { position:relative; display:flex; justify-content:center; align-items:center; width:100%; height:100%; }
-        .lightbox img { max-width:85%; max-height:85%; border:5px solid white; border-radius:10px; }
-        .btn-back-lb { position:fixed; top:20px; left:20px; color:white; cursor:pointer; font-weight:bold; background:rgba(0,0,0,0.5); padding:10px 20px; border-radius:8px; z-index:10001; }
+        .lightbox-content { position:relative; display:inline-block; }
+        .lightbox img { max-width:85vw; max-height:85vh; border:5px solid white; border-radius:10px; }
+        
+        .close-btn { position:absolute; top:-40px; right:0; color:white; font-size:30px; cursor:pointer; font-weight:bold; }
         .nav-btn { position:absolute; top:50%; color:white; font-size:50px; cursor:pointer; padding:20px; user-select:none; }
-        .prev { left:20px; }
-        .next { right:20px; }
-        .watermark { position:absolute; bottom:30px; right:30px; color:rgba(255,255,255,0.4); font-size:1.5rem; pointer-events:none; }
+        .prev { left:-60px; }
+        .next { right:-60px; }
+        
+        .watermark { position:absolute; bottom:15px; right:15px; color:rgba(255,255,255,0.7); font-size:1.2rem; pointer-events:none; text-shadow:1px 1px 2px black; }
     </style>
 </head>
 <body>
@@ -44,28 +39,17 @@
 
 <header class="hero">
     <h1>OHŘE 2025</h1>
-    <p>19.–22. června 2025</p>
-    <h2>44 kilometrů, spousta smíchu a další nezapomenutelná vodácká výprava.</h2>
 </header>
 
 <div class="container">
-    <section><div class="card"><h2>🚣‍♂️ Úvod</h2><p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři! A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze. Příjezd do kempu jsme naplánovali na čtvrteční večer po práci. Po příjezdu následovala klasická vodácká rutina – postavit stany, nafoukat matrace a připravit zázemí na několik pohodových dní na řece. Večer jsme zakončili večeří v místní restauraci. Bohužel nás čekalo malé zklamání – oproti minulému roku změnili jídelní lístek a legendární retro plátek s broskví už tentokrát na menu nebyl. 🍑😄</p></div></section>
-
-    <section><div class="card"><h2>🚣 Pátek – konečně na vodě</h2><p>V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket. Vody v řece tentokrát nebylo mnoho, takže nás čekalo neustálé vyhýbání kamenům a občasné drhnutí o dno. Naši háčkové jsou ale už zkušení a vodou pořádně ostřílení vodáci, takže dokážou zahlásit každý kámen i každou peřejku. A aby bylo na první pohled jasné, že po řece pluje sehraná posádka, vyrazili jsme letos v proužkatých tričkách jako praví námořníci! ⚓👕 Konečně jsme se také dočkali hlavního cíle celé výpravy – vidět Loket z vodní hladiny. A musíme uznat, že ten pohled opravdu stojí za to. Kolem 19:00 jsme dopluli až do Karlových Varů, odkud nás čekal návrat do kempu a zasloužená odměna – večeře a nějaké to pivíčko. 🍻</p></div></section>
-
-    <section><div class="card"><h2>🚣 Sobota – Hubertus volá</h2><p>Po snídani na nás už čekaly dodávky směrem do Karlových Varů. Tam jsme se opět nalodili a věděli jsme, že nás čeká stejný úsek jako minulý rok. První zastávka? Samozřejmě hospůdka! Pivíčko, aperolek a hurá zpátky na vodu. 🍺🍹 Nejvíce jsme se ale těšili na Hubertus. Nejen kvůli místním peřejím, ale hlavně kvůli obědu v lese a oblíbenému stylu „ogriluj si sám“. Během odpolední pohodové plavby si naši tři nejstarší háčkové vyzkoušeli plavbu na kánoi úplně sami a dokázali, že z nich rostou opravdoví vodáci. 🚣‍♂️👏 Do kempu jsme dorazili plní krásných vzpomínek a nových zážitků.</p></div></section>
-
-    <section><div class="card"><h2>🚗 Neděle – čas vrátit se domů</h2><p>Na neděli už nebylo nic velkého naplánováno, a tak jsme se před odjezdem zašli podívat do Kyselky na Mattoniho pramen a samozřejmě ho i ochutnat. Poté jsme sbalili stany, rozloučili se s kempem a vyrazili směrem na Třemošnou. A co říct závěrem? Ohře je opravdu nádherná řeka. Opět nám nabídla krásnou přírodu, pohodovou plavbu, spoustu smíchu a další nezapomenutelná vzpomínky. 🌊⚓🦙</p></div></section>
-
-    <section><h2>🗺️ Trasa plavby</h2><img src="fotky/2025/mapa2025.png" class="map">
-        <table><tr><th>Den</th><th>Trasa</th><th>Km</th></tr><tr><td>Pátek</td><td>Sokolov → Loket → Karlovy Vary</td><td>29 km</td></tr><tr><td>Sobota</td><td>Karlovy Vary → Radošov</td><td>15 km</td></tr><tr><td><strong>Celkem</strong></td><td></td><td><strong>44 km</strong></td></tr></table>
-    </section>
-
-    <section><h2>📸 Fotogalerie</h2><div class="gallery" id="gallery"></div></section>
+    <div class="card">
+        <h2>📸 Fotogalerie</h2>
+        <div class="gallery" id="gallery"></div>
+    </div>
 </div>
 
 <div class="lightbox" id="lightbox">
-    <div class="btn-back-lb" onclick="closeLightbox()">← Zpět</div>
+    <div class="close-btn" onclick="closeLightbox()">&times;</div>
     <div class="nav-btn prev" onclick="changeImage(-1)">&#10094;</div>
     <div class="lightbox-content">
         <img id="lightbox-img">
@@ -75,13 +59,13 @@
 </div>
 
 <script>
-    const fileNames = [];
-    for (let i = 1; i <= 58; i++) { fileNames.push(i); }
-
     const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     let currentIndex = 0;
+    
+    // Vygeneruje pole 1 až 58
+    const fileNames = Array.from({length: 58}, (_, i) => i + 1);
 
     fileNames.forEach((num, index) => {
         const img = document.createElement('img');
