@@ -1,202 +1,50 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ohře 2025 | T-LAMA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohře 2025 | T-LAMA</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:Arial,sans-serif; background:#f5f7fa; color:#333; line-height:1.7; }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        /* HERO */
+        .hero { background:linear-gradient(135deg,#0b4f7d,#1f7fc5,#42b0ff); color:white; text-align:center; padding:120px 20px; border-bottom:8px solid #ffd166; }
+        .hero h1 { font-size:4rem; margin:20px 0; text-shadow:3px 3px 8px rgba(0,0,0,0.4); }
+        .hero p { font-size:1.5rem; }
+        .hero h2 { max-width:900px; margin:25px auto 0; font-weight:normal; }
+        .waves { font-size:2.5rem; animation:float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
 
-html{
-    scroll-behavior:smooth;
-}
+        /* OBSAH */
+        .container { max-width:1100px; margin:auto; padding:60px 20px; }
+        section { margin-bottom:70px; }
+        h2 { color:#0b4f7d; margin-bottom:25px; font-size:2rem; }
+        .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f5f7fa;
-    color:#333;
-    line-height:1.7;
-}
+        /* TABULKA A MAPA */
+        .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); margin-bottom: 20px; }
+        table { width:100%; border-collapse:collapse; margin-top:20px; }
+        th { background:#0b4f7d; color:white; padding:15px; text-align: left; }
+        td { padding:15px; border-bottom:1px solid #ddd; }
+        tr:nth-child(even) { background:#f5f5f5; }
 
-/* HERO */
+        /* GALERIE */
+        .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+        .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; transition:0.3s; box-shadow:0 5px 20px rgba(0,0,0,0.2); }
+        .gallery img:hover { transform:scale(1.03); }
 
-.hero{
-    background:linear-gradient(135deg,#0b4f7d,#1f7fc5,#42b0ff);
-    color:white;
-    text-align:center;
-    padding:120px 20px;
-    border-bottom:8px solid #ffd166;
-}
+        /* LIGHTBOX */
+        .lightbox { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
+        .lightbox img { max-width:90%; max-height:90%; border-radius:15px; }
+        .close { position:absolute; top:20px; right:35px; color:white; font-size:50px; cursor:pointer; }
 
-.hero h1{
-    font-size:4rem;
-    margin:20px 0;
-    text-shadow:3px 3px 8px rgba(0,0,0,0.4);
-}
+        /* FOOTER */
+        footer { background:#0b4f7d; color:white; text-align:center; padding:50px 20px; margin-top:80px; }
 
-.hero p{
-    font-size:1.5rem;
-}
-
-.hero h2{
-    max-width:900px;
-    margin:25px auto 0;
-    font-weight:normal;
-}
-
-.waves{
-    font-size:2.5rem;
-    animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-/* OBSAH */
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-section{
-    margin-bottom:70px;
-}
-
-h2{
-    color:#0b4f7d;
-    margin-bottom:25px;
-    font-size:2rem;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-}
-
-/* MAPA */
-
-.map{
-    width:100%;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.15);
-}
-
-/* TABULKA */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th{
-    background:#0b4f7d;
-    color:white;
-    padding:15px;
-}
-
-td{
-    padding:15px;
-    border-bottom:1px solid #ddd;
-}
-
-tr:nth-child(even){
-    background:#f5f5f5;
-}
-
-/* GALERIE */
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.gallery img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    border-radius:15px;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.gallery img:hover{
-    transform:scale(1.03);
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-    display:none;
-    position:fixed;
-    z-index:9999;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.9);
-    justify-content:center;
-    align-items:center;
-}
-
-.lightbox img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:15px;
-}
-
-.close{
-    position:absolute;
-    top:20px;
-    right:35px;
-    color:white;
-    font-size:50px;
-    cursor:pointer;
-}
-
-/* FOOTER */
-
-footer{
-    background:#0b4f7d;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
-    margin-top:80px;
-}
-
-footer p{
-    font-size:1.2rem;
-}
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:2.8rem;
-}
-
-.hero h2{
-    font-size:1.1rem;
-}
-
-}
-</style>
+        @media(max-width:768px) { .hero h1 { font-size:2.8rem; } }
+    </style>
 </head>
 <body>
 
@@ -208,187 +56,62 @@ footer p{
 </header>
 
 <div class="container">
+    <section class="card">
+        <h2>🚣‍♂️ Úvod</h2>
+        <p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři!</p>
+        <p>A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze.</p>
+    </section>
 
-<section>
-<div class="card">
+    <section class="card">
+        <h2>🚣 Pátek – konečně na vodě</h2>
+        <p>V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket. Naši háčkové byli skvělí, námořnická trička nám slušela a cíl vidět Loket z hladiny byl splněn!</p>
+    </section>
 
-<h2>🚣‍♂️ Úvod</h2>
+    <section class="card">
+        <h2>🚣 Sobota – Hubertus volá</h2>
+        <p>Nejvíce jsme se těšili na Hubertus – peřeje a legendární „ogriluj si sám“. Naši nejstarší háčkové navíc zvládli plavbu na kánoi úplně sami. 🚣‍♂️👏</p>
+    </section>
 
-<p>
-Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři!
-</p>
+    <section class="card">
+        <h2>🚗 Neděle – návrat domů</h2>
+        <p>Před odjezdem jsme v Kyselce ochutnali Mattoniho pramen a pak už zamířili zpět do Třemošné. Ohře byla opět úžasná.</p>
+    </section>
 
-<p>
-A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze.
-</p>
+    <section>
+        <h2>🗺️ Trasa plavby</h2>
+        <img src="fotky/2025/mapa2025.png" class="map" alt="Mapa trasy">
+        <table>
+            <tr><th>Den</th><th>Trasa</th><th>Km</th></tr>
+            <tr><td>Pátek</td><td>Sokolov → Loket → Karlovy Vary</td><td>29 km</td></tr>
+            <tr><td>Sobota</td><td>Karlovy Vary → Radošov</td><td>15 km</td></tr>
+            <tr><td><strong>Celkem</strong></td><td></td><td><strong>44 km</strong></td></tr>
+        </table>
+    </section>
 
-<p>
-Příjezd do kempu jsme naplánovali na čtvrteční večer po práci. Po příjezdu následovala klasická vodácká rutina – postavit stany, nafoukat matrace a připravit zázemí na několik pohodových dní na řece.
-</p>
-
-<p>
-Večer jsme zakončili večeří v místní restauraci. Bohužel nás čekalo malé zklamání – oproti minulému roku změnili jídelní lístek a legendární retro plátek s broskví už tentokrát na menu nebyl. 🍑😄
-</p>
-
-</div>
-</section>
-
-<section>
-<div class="card">
-
-<h2>🚣 Pátek – konečně na vodě</h2>
-
-<p>
-V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket.
-</p>
-
-<p>
-Vody v řece tentokrát nebylo mnoho, takže nás čekalo neustálé vyhýbání kamenům a občasné drhnutí o dno. Naši háčkové jsou ale už zkušení a vodou pořádně ostřílení vodáci, takže dokážou zahlásit každý kámen i každou peřejku.
-</p>
-
-<p>
-A aby bylo na první pohled jasné, že po řece pluje sehraná posádka, vyrazili jsme letos v <strong>proužkatých tričkách jako praví námořníci</strong>. ⚓👕
-</p>
-
-<p>
-Konečně jsme se také dočkali hlavního cíle celé výpravy – vidět Loket z vodní hladiny. A musíme uznat, že ten pohled opravdu stojí za to.
-</p>
-
-<p>
-Kolem 19:00 jsme dopluli až do Karlových Varů, odkud nás čekal návrat do kempu a zasloužená odměna – večeře a nějaké to pivíčko. 🍻
-</p>
-
-</div>
-</section>
-
-<section>
-<div class="card">
-
-<h2>🚣 Sobota – Hubertus volá</h2>
-
-<p>
-Po snídani na nás už čekaly dodávky směrem do Karlových Varů. Tam jsme se opět nalodili a věděli jsme, že nás čeká stejný úsek jako minulý rok.
-</p>
-
-<p>
-První zastávka? Samozřejmě hospůdka! Pivíčko, aperolek a hurá zpátky na vodu. 🍺🍹
-</p>
-
-<p>
-Nejvíce jsme se ale těšili na Hubertus. Nejen kvůli místním peřejím, ale hlavně kvůli obědu v lese a oblíbenému stylu <strong>„ogriluj si sám“</strong>.
-</p>
-
-<p>
-Během odpolední pohodové plavby si naši tři nejstarší háčkové vyzkoušeli plavbu na kánoi úplně sami a dokázali, že z nich rostou opravdoví vodáci. 🚣‍♂️👏
-</p>
-
-<p>
-Do kempu jsme dorazili plní krásných vzpomínek a nových zážitků. Večeře opět proběhla v restauraci a večer jsme zakončili posezením v našem táborovém zázemí.
-</p>
-
-</div>
-</section>
-
-<section>
-<div class="card">
-
-<h2>🚗 Neděle – čas vrátit se domů</h2>
-
-<p>
-Na neděli už nebylo nic velkého naplánováno, a tak jsme se před odjezdem zašli podívat do Kyselky na Mattoniho pramen a samozřejmě ho i ochutnat.
-</p>
-
-<p>
-Poté jsme sbalili stany, rozloučili se s kempem a vyrazili směrem na Třemošnou.
-</p>
-
-<p>
-A co říct závěrem? <strong>Ohře je opravdu nádherná řeka.</strong> Opět nám nabídla krásnou přírodu, pohodovou plavbu, spoustu smíchu a další nezapomenutelné vzpomínky. 🌊⚓🦙
-</p>
-
-</div>
-</section>
-
-<section>
-<h2>🗺️ Trasa plavby</h2>
-
-<img src="fotky/2025/mapa2025.png" class="map">
-
-<table>
-<tr>
-<th>Den</th>
-<th>Trasa</th>
-<th>Km</th>
-</tr>
-
-<tr>
-<td>Pátek</td>
-<td>Sokolov → Loket → Karlovy Vary</td>
-<td>29 km</td>
-</tr>
-
-<tr>
-<td>Sobota</td>
-<td>Karlovy Vary → Kemp Na Špici (Radošov)</td>
-<td>15 km</td>
-</tr>
-
-<tr>
-<td><strong>Celkem</strong></td>
-<td></td>
-<td><strong>44 km</strong></td>
-</tr>
-</table>
-
-</section>
-
-<section>
-
-<h2>📸 Fotogalerie</h2>
-
-<div class="gallery" id="gallery"></div>
-
-</section>
-
+    <section>
+        <h2>📸 Fotogalerie</h2>
+        <div class="gallery" id="gallery"></div>
+    </section>
 </div>
 
-<div class="lightbox" id="lightbox">
-    <span class="close">&times;</span>
-    <img id="lightbox-img">
-</div>
+<div class="lightbox" id="lightbox"><span class="close">&times;</span><img id="lightbox-img"></div>
 
 <footer>
-<p>
-„Na vodě nejde o kilometry, ale o zážitky, smích a partu lidí, se kterou je radost vyrazit.“ 🚣‍♂️🌊🦙
-</p>
+    <p>„Na vodě nejde o kilometry, ale o zážitky, smích a partu lidí.“</p>
 </footer>
 
 <script>
-const gallery = document.getElementById('gallery');
-
-for(let i=1;i<=57;i++){
-    const img=document.createElement('img');
-    img.src=`fotky/2025/${i}.jpeg`;
-    img.alt=`Ohře 2025 ${i}`;
-
-    img.onclick=()=>{
-        document.getElementById('lightbox').style.display='flex';
-        document.getElementById('lightbox-img').src=img.src;
-    };
-
-    gallery.appendChild(img);
-}
-
-document.querySelector('.close').onclick=()=>{
-    document.getElementById('lightbox').style.display='none';
-};
-
-document.getElementById('lightbox').onclick=(e)=>{
-    if(e.target.id==='lightbox'){
-        document.getElementById('lightbox').style.display='none';
+    const gallery = document.getElementById('gallery');
+    for(let i=1; i<=57; i++){
+        const img = document.createElement('img');
+        img.src = `fotky/2025/${i}.jpeg`;
+        img.onclick = () => {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = img.src;
+        };
+        gallery.appendChild(img);
     }
-};
+    document.querySelector('.close').onclick = () => document.getElementById('lightbox').style.display = 'none';
 </script>
-
 </body>
 </html>
