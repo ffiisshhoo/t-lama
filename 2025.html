@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ohře 2025 | T-LAMA</title>
-
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
@@ -22,7 +21,7 @@
         .container { max-width:1100px; margin:auto; padding:60px 20px; }
         section { margin-bottom:70px; }
         h2 { color:#0b4f7d; margin-bottom:25px; font-size:2rem; }
-        .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); }
+        .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); margin-bottom:30px; }
 
         /* MAPA A TABULKA */
         .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); }
@@ -36,16 +35,18 @@
         .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; transition:0.3s; box-shadow:0 5px 20px rgba(0,0,0,0.2); }
         .gallery img:hover { transform:scale(1.03); }
 
-        /* LIGHTBOX - VZOR BEROUNKA */
-        .lightbox { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
-        .lightbox img { max-width:85%; max-height:85%; border:5px solid white; border-radius:10px; }
+        /* LIGHTBOX - VYLEPŠENÝ */
+        .lightbox { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; }
+        .lightbox img { max-width:85%; max-height:85%; border-radius:10px; border:5px solid white; }
         .close { position:absolute; top:20px; right:35px; color:white; font-size:50px; cursor:pointer; }
-        .nav-btn { position:absolute; top:50%; color:white; font-size:40px; cursor:pointer; padding:20px; user-select:none; }
+        .btn-back-lightbox { position:absolute; top:35px; left:35px; color:white; font-size:1.2rem; cursor:pointer; }
+        .nav-btn { position:absolute; top:50%; color:white; font-size:50px; cursor:pointer; padding:20px; }
         .prev { left:20px; }
         .next { right:20px; }
-        .watermark { position:absolute; bottom:20px; color:rgba(255,255,255,0.4); font-size:1.2rem; pointer-events:none; }
+        .watermark { position:absolute; bottom:20px; color:rgba(255,255,255,0.4); font-size:1.2rem; }
 
         footer { background:#0b4f7d; color:white; text-align:center; padding:50px 20px; margin-top:80px; }
+        .btn-home { display:inline-block; margin-top:20px; padding:15px 30px; background:#0b4f7d; color:white; text-decoration:none; border-radius:10px; font-weight:bold; }
     </style>
 </head>
 <body>
@@ -58,60 +59,31 @@
 </header>
 
 <div class="container">
-    <section class="card">
-        <h2>🚣‍♂️ Úvod</h2>
-        <p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři!</p>
-    </section>
-
+    <section><div class="card"><h2>🚣‍♂️ Úvod</h2><p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři!</p></div></section>
+    
     <section>
         <h2>📸 Fotogalerie</h2>
         <div class="gallery" id="gallery"></div>
+        <a href="index.html" class="btn-home">← Zpět na přehled roků</a>
     </section>
 </div>
 
 <div class="lightbox" id="lightbox">
-    <span class="close">&times;</span>
+    <div class="btn-back-lightbox" onclick="closeLightbox()">← Zpět</div>
+    <span class="close" onclick="closeLightbox()">&times;</span>
     <div class="nav-btn prev" onclick="changeImage(-1)">&#10094;</div>
     <img id="lightbox-img">
     <div class="watermark">T-LAMA 2025</div>
     <div class="nav-btn next" onclick="changeImage(1)">&#10095;</div>
 </div>
 
+<footer>
+    <p>„Na vodě nejde o kilometry, ale o zážitky.“ 🚣‍♂️🌊🦙</p>
+</footer>
+
 <script>
     const totalImages = 57;
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const gallery = document.getElementById('gallery');
-
-    // Generování galerie
-    for(let i=1; i<=totalImages; i++){
-        const img = document.createElement('img');
-        img.src = `fotky/2025/${i}.jpeg`;
-        img.onclick = () => { currentIndex = i-1; updateLightbox(); lightbox.style.display = 'flex'; };
-        gallery.appendChild(img);
-    }
-
-    function updateLightbox() {
-        lightboxImg.src = `fotky/2025/${currentIndex + 1}.jpeg`;
-    }
-
-    function changeImage(step) {
-        currentIndex = (currentIndex + step + totalImages) % totalImages;
-        updateLightbox();
-    }
-
-    // Ovládání
-    document.querySelector('.close').onclick = () => lightbox.style.display = 'none';
-    document.onkeydown = (e) => {
-        if(lightbox.style.display === 'flex') {
-            if(e.key === 'ArrowLeft') changeImage(-1);
-            if(e.key === 'ArrowRight') changeImage(1);
-            if(e.key === 'Escape') lightbox.style.display = 'none';
-        }
-    };
-    lightbox.onclick = (e) => { if(e.target.id === 'lightbox') lightbox.style.display = 'none'; };
-</script>
-
-</body>
-</html>
+    const
