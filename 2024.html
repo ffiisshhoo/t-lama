@@ -24,7 +24,7 @@
 
         /* Galerie */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; cursor: pointer; transition: 0.5s; border: 3px solid white; }
+        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; cursor: pointer; transition: 0.5s; border: 3px solid white; background-color: #eee; }
         .gallery img:hover { transform: scale(1.05) rotate(1deg); border-color: #27ae60; }
 
         /* Lightbox */
@@ -87,13 +87,21 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     let currentIndex = 1;
-    // Nastaveno na 34 fotek podle tvého screenshotu
-    const totalPhotos = 34; 
+    const totalPhotos = 49; 
+
+    // Pomocná funkce pro zjištění cesty
+    function getPhotoPath(i, isLightbox = false) {
+        // Zkusí nejdříve b1.jpeg, pokud selže, zkusí 1.jpeg
+        return `fotky/2024/b${i}.jpeg`;
+    }
 
     for (let i = 1; i <= totalPhotos; i++) {
         const img = document.createElement('img');
-        // Kód nyní hledá soubory b1.jpeg, b2.jpeg až b34.jpeg
         img.src = `fotky/2024/b${i}.jpeg`;
+        
+        // Pokud b-verze neexistuje, zkusí načíst verzi bez b
+        img.onerror = function() { this.src = `fotky/2024/${i}.jpeg`; };
+        
         img.loading = "lazy";
         img.onclick = () => { currentIndex = i; showLightbox(i); };
         galerie.appendChild(img);
@@ -101,6 +109,8 @@
 
     function showLightbox(index) {
         lightboxImg.src = `fotky/2024/b${index}.jpeg`;
+        // Pokud b-verze neexistuje, zkusí načíst verzi bez b
+        lightboxImg.onerror = function() { this.src = `fotky/2024/${index}.jpeg`; };
         lightbox.classList.add('active');
     }
 
