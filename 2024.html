@@ -86,40 +86,35 @@
     const galerie = document.getElementById('galerie2024');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    let currentIndex = 1;
-    const totalPhotos = 49; 
+    
+    // Vytvoříme seznam všech souborů
+    const soubory = [];
+    for(let i = 1; i <= 49; i++) soubory.push(`${i}.jpeg`);
+    for(let i = 1; i <= 34; i++) soubory.push(`b${i}.jpeg`);
 
-    // Pomocná funkce pro zjištění cesty
-    function getPhotoPath(i, isLightbox = false) {
-        // Zkusí nejdříve b1.jpeg, pokud selže, zkusí 1.jpeg
-        return `fotky/2024/b${i}.jpeg`;
-    }
+    let currentIndex = 0;
 
-    for (let i = 1; i <= totalPhotos; i++) {
+    // Generování galerie
+    soubory.forEach((soubor, index) => {
         const img = document.createElement('img');
-        img.src = `fotky/2024/b${i}.jpeg`;
-        
-        // Pokud b-verze neexistuje, zkusí načíst verzi bez b
-        img.onerror = function() { this.src = `fotky/2024/${i}.jpeg`; };
-        
+        img.src = `fotky/2024/${soubor}`;
         img.loading = "lazy";
-        img.onclick = () => { currentIndex = i; showLightbox(i); };
+        img.onclick = () => { showLightbox(index); };
         galerie.appendChild(img);
-    }
+    });
 
     function showLightbox(index) {
-        lightboxImg.src = `fotky/2024/b${index}.jpeg`;
-        // Pokud b-verze neexistuje, zkusí načíst verzi bez b
-        lightboxImg.onerror = function() { this.src = `fotky/2024/${index}.jpeg`; };
+        currentIndex = index;
+        lightboxImg.src = `fotky/2024/${soubory[currentIndex]}`;
         lightbox.classList.add('active');
     }
 
     function changeImage(e, step) {
         if(e) e.stopPropagation();
         currentIndex += step;
-        if (currentIndex > totalPhotos) currentIndex = 1;
-        if (currentIndex < 1) currentIndex = totalPhotos;
-        showLightbox(currentIndex);
+        if (currentIndex >= soubory.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = soubory.length - 1;
+        lightboxImg.src = `fotky/2024/${soubory[currentIndex]}`;
     }
 
     lightbox.onclick = (e) => { 
