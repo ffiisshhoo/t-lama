@@ -9,7 +9,7 @@
         html { scroll-behavior:smooth; }
         body { font-family:Arial,sans-serif; background:#f5f7fa; color:#333; line-height:1.7; }
         
-        /* TLAČÍTKO ZPĚT */
+        /* TLAČÍTKO ZPĚT PŘIPNUTÉ NAHOŘE */
         .sticky-back { position:fixed; top:20px; left:20px; z-index:9999; background:#0b4f7d; color:white; padding:10px 20px; border-radius:10px; text-decoration:none; font-weight:bold; box-shadow:0 2px 5px rgba(0,0,0,0.3); }
 
         .hero { background:linear-gradient(135deg,#0b4f7d,#1f7fc5,#42b0ff); color:white; text-align:center; padding:120px 20px; border-bottom:8px solid #ffd166; }
@@ -23,14 +23,15 @@
         th { background:#0b4f7d; color:white; padding:15px; }
         td { padding:15px; border-bottom:1px solid #ddd; }
         tr:nth-child(even) { background:#f5f5f5; }
+        
         .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
         .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; }
         
-        /* LIGHTBOX */
+        /* LIGHTBOX A PRVKY */
         .lightbox { display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; }
         .lightbox img { max-width:85%; max-height:85%; border:5px solid white; border-radius:10px; }
         .btn-back-lb { position:fixed; top:20px; left:20px; color:white; cursor:pointer; font-weight:bold; background:rgba(0,0,0,0.5); padding:10px 20px; border-radius:8px; z-index:10001; }
-        .nav-btn { position:absolute; top:50%; color:white; font-size:50px; cursor:pointer; padding:20px; }
+        .nav-btn { position:absolute; top:50%; color:white; font-size:50px; cursor:pointer; padding:20px; user-select:none; }
         .prev { left:20px; }
         .next { right:20px; }
         .watermark { position:absolute; bottom:20px; right:20px; color:rgba(255,255,255,0.4); font-size:1.2rem; }
@@ -71,22 +72,23 @@
 </div>
 
 <script>
+    // Seznam všech souborů podle screenshotu
+    const fileNames = [5, 6, 7, 8, 9, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58];
     const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     let currentIndex = 0;
-    const totalImages = 58;
 
-    for (let i = 1; i <= totalImages; i++) {
+    fileNames.forEach((num, index) => {
         const img = document.createElement('img');
-        img.src = `fotky/2025/${i}.jpeg`;
-        img.onclick = () => { currentIndex = i - 1; lightboxImg.src = img.src; lightbox.style.display = 'flex'; };
+        img.src = `fotky/2025/${num}.jpeg`;
+        img.onclick = () => { currentIndex = index; lightboxImg.src = img.src; lightbox.style.display = 'flex'; };
         gallery.appendChild(img);
-    }
+    });
 
     function changeImage(step) {
-        currentIndex = (currentIndex + step + totalImages) % totalImages;
-        lightboxImg.src = `fotky/2025/${currentIndex + 1}.jpeg`;
+        currentIndex = (currentIndex + step + fileNames.length) % fileNames.length;
+        lightboxImg.src = `fotky/2025/${fileNames[currentIndex]}.jpeg`;
     }
     function closeLightbox() { lightbox.style.display = 'none'; }
     document.onkeydown = (e) => { if(e.key === 'Escape') closeLightbox(); if(e.key === 'ArrowLeft') changeImage(-1); if(e.key === 'ArrowRight') changeImage(1); };
