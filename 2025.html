@@ -9,21 +9,26 @@
         html { scroll-behavior:smooth; }
         body { font-family:Arial,sans-serif; background:#f5f7fa; color:#333; line-height:1.7; }
 
+        /* HERO */
         .hero { background:linear-gradient(135deg,#0b4f7d,#1f7fc5,#42b0ff); color:white; text-align:center; padding:120px 20px; border-bottom:8px solid #ffd166; }
         .hero h1 { font-size:4rem; margin:20px 0; text-shadow:3px 3px 8px rgba(0,0,0,0.4); }
         .container { max-width:1100px; margin:auto; padding:60px 20px; }
         section { margin-bottom:70px; }
+        h2 { color:#0b4f7d; margin-bottom:25px; font-size:2rem; }
         .card { background:white; padding:35px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); margin-bottom:30px; }
         
+        /* TABULKA A MAPA */
         .map { width:100%; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.15); }
         table { width:100%; border-collapse:collapse; margin-top:20px; }
         th { background:#0b4f7d; color:white; padding:15px; }
         td { padding:15px; border-bottom:1px solid #ddd; }
         tr:nth-child(even) { background:#f5f5f5; }
 
+        /* GALERIE */
         .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
         .gallery img { width:100%; height:230px; object-fit:cover; border-radius:15px; cursor:pointer; }
         
+        /* LIGHTBOX */
         .lightbox { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; }
         .lightbox img { max-width:85%; max-height:85%; border:5px solid white; border-radius:10px; }
         .close { position:absolute; top:20px; right:35px; color:white; font-size:50px; cursor:pointer; }
@@ -38,42 +43,23 @@
 <header class="hero">
     <h1>OHŘE 2025</h1>
     <p>19.–22. června 2025</p>
+    <h2>44 kilometrů, spousta smíchu a další nezapomenutelná vodácká výprava.</h2>
 </header>
 
 <div class="container">
-    <section class="card">
-        <h2>🚣‍♂️ Úvod</h2>
-        <p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři! A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze.</p>
+    <section><div class="card"><h2>🚣‍♂️ Úvod</h2><p>Již minulý rok jsme se shodli, že chceme konečně vidět Loket z vodní hladiny, a tak byl plán pro rok 2025 jasný – vracíme se na Ohři! A kde jinde se ubytovat než v našem osvědčeném zázemí, v kempu Na Špici. Letos se k naší posádce navíc přidala další parta známých – GUMÍKOJC, takže bylo od začátku jasné, že o zábavu nebude nouze. Příjezd do kempu jsme naplánovali na čtvrteční večer po práci. Po příjezdu následovala klasická vodácká rutina – postavit stany, nafoukat matrace a připravit zázemí na několik pohodových dní na řece. Večer jsme zakončili večeří v místní restauraci. Bohužel nás čekalo malé zklamání – oproti minulému roku změnili jídelní lístek a legendární retro plátek s broskví už tentokrát na menu nebyl. 🍑😄</p></div></section>
+
+    <section><div class="card"><h2>🚣 Pátek – konečně na vodě</h2><p>V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket. Vody v řece tentokrát nebylo mnoho, takže nás čekalo neustálé vyhýbání kamenům a občasné drhnutí o dno. Naši háčkové jsou ale už zkušení a vodou pořádně ostřílení vodáci, takže dokážou zahlásit každý kámen i každou peřejku. A aby bylo na první pohled jasné, že po řece pluje sehraná posádka, vyrazili jsme letos v proužkatých tričkách jako praví námořníci! ⚓👕 Konečně jsme se také dočkali hlavního cíle celé výpravy – vidět Loket z vodní hladiny. A musíme uznat, že ten pohled opravdu stojí za to. Kolem 19:00 jsme dopluli až do Karlových Varů, odkud nás čekal návrat do kempu a zasloužená odměna – večeře a nějaké to pivíčko. 🍻</p></div></section>
+
+    <section><div class="card"><h2>🚣 Sobota – Hubertus volá</h2><p>Po snídani na nás už čekaly dodávky směrem do Karlových Varů. Tam jsme se opět nalodili a věděli jsme, že nás čeká stejný úsek jako minulý rok. První zastávka? Samozřejmě hospůdka! Pivíčko, aperolek a hurá zpátky na vodu. 🍺🍹 Nejvíce jsme se ale těšili na Hubertus. Nejen kvůli místním peřejím, ale hlavně kvůli obědu v lese a oblíbenému stylu „ogriluj si sám“. Během odpolední pohodové plavby si naši tři nejstarší háčkové vyzkoušeli plavbu na kánoi úplně sami a dokázali, že z nich rostou opravdoví vodáci. 🚣‍♂️👏 Do kempu jsme dorazili plní krásných vzpomínek a nových zážitků.</p></div></section>
+
+    <section><div class="card"><h2>🚗 Neděle – čas vrátit se domů</h2><p>Na neděli už nebylo nic velkého naplánováno, a tak jsme se před odjezdem zašli podívat do Kyselky na Mattoniho pramen a samozřejmě ho i ochutnat. Poté jsme sbalili stany, rozloučili se s kempem a vyrazili směrem na Třemošnou. A co říct závěrem? Ohře je opravdu nádherná řeka. Opět nám nabídla krásnou přírodu, pohodovou plavbu, spoustu smíchu a další nezapomenutelné vzpomínky. 🌊⚓🦙</p></div></section>
+
+    <section><h2>🗺️ Trasa plavby</h2><img src="fotky/2025/mapa2025.png" class="map">
+        <table><tr><th>Den</th><th>Trasa</th><th>Km</th></tr><tr><td>Pátek</td><td>Sokolov → Loket → Karlovy Vary</td><td>29 km</td></tr><tr><td>Sobota</td><td>Karlovy Vary → Radošov</td><td>15 km</td></tr><tr><td><strong>Celkem</strong></td><td></td><td><strong>44 km</strong></td></tr></table>
     </section>
 
-    <section class="card">
-        <h2>🚣 Pátek – konečně na vodě</h2>
-        <p>V pátek jsme se autobusovou dopravou přesunuli do Sokolova, kde jsme si vyzvedli naše plavidla a vypluli směrem na Loket. Vody bylo málo, ale háčkové byli skvělí. Vyrazili jsme v proužkatých tričkách jako praví námořníci! ⚓👕</p>
-    </section>
-
-    <section class="card">
-        <h2>🚣 Sobota – Hubertus volá</h2>
-        <p>Nejvíce jsme se těšili na Hubertus – peřeje a legendární „ogriluj si sám“. Naši nejstarší háčkové navíc zvládli plavbu na kánoi úplně sami. 🚣‍♂️👏</p>
-    </section>
-
-    <section class="card">
-        <h2>🚗 Neděle – návrat domů</h2>
-        <p>Před odjezdem jsme v Kyselce ochutnali Mattoniho pramen a pak už zamířili zpět do Třemošné. Ohře byla opět úžasná.</p>
-    </section>
-
-    <section class="card">
-        <h2>🗺️ Trasa plavby</h2>
-        <img src="fotky/2025/mapa2025.png" class="map">
-        <table>
-            <tr><th>Den</th><th>Trasa</th><th>Km</th></tr>
-            <tr><td>Pátek</td><td>Sokolov → Loket → Karlovy Vary</td><td>29 km</td></tr>
-            <tr><td>Sobota</td><td>Karlovy Vary → Radošov</td><td>15 km</td></tr>
-        </table>
-    </section>
-
-    <section class="card">
-        <h2>📸 Fotogalerie</h2>
-        <div class="gallery" id="gallery"></div>
+    <section><h2>📸 Fotogalerie</h2><div class="gallery" id="gallery"></div>
         <a href="index.html" class="btn-home">← Zpět na přehled</a>
     </section>
 </div>
@@ -81,36 +67,33 @@
 <div class="lightbox" id="lightbox">
     <div class="btn-back-lb" onclick="closeLightbox()">← Zpět</div>
     <span class="close" onclick="closeLightbox()">&times;</span>
-    <div class="nav-btn prev" onclick="changeImage(-1)">&#10094;</div>
+    <div class="nav-btn prev" style="left:20px;" onclick="changeImage(-1)">&#10094;</div>
     <img id="lightbox-img">
     <div class="watermark">T-LAMA 2025</div>
-    <div class="nav-btn next" onclick="changeImage(1)">&#10095;</div>
+    <div class="nav-btn next" style="right:20px;" onclick="changeImage(1)">&#10095;</div>
 </div>
 
 <script>
-    const totalImages = 58;
+    // Seznam všech souborů, které máš na GitHubu (čísla 5 až 58)
+    const fileNames = [5, 6, 7, 8, 9, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58];
     let currentIndex = 0;
+    const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const gallery = document.getElementById('gallery');
 
-    for(let i=1; i<=totalImages; i++){
+    fileNames.forEach((num, index) => {
         const img = document.createElement('img');
-        img.src = `fotky/2025/${i}.jpeg`;
-        img.onclick = () => { currentIndex = i-1; updateLightbox(); lightbox.style.display = 'flex'; };
+        img.src = `fotky/2025/${num}.jpeg`;
+        img.onclick = () => { currentIndex = index; lightboxImg.src = img.src; lightbox.style.display = 'flex'; };
         gallery.appendChild(img);
-    }
-
-    function updateLightbox() {
-        lightboxImg.src = `fotky/2025/${currentIndex + 1}.jpeg`;
-    }
+    });
 
     function changeImage(step) {
-        currentIndex = (currentIndex + step + totalImages) % totalImages;
-        updateLightbox();
+        currentIndex = (currentIndex + step + fileNames.length) % fileNames.length;
+        lightboxImg.src = `fotky/2025/${fileNames[currentIndex]}.jpeg`;
     }
-
     function closeLightbox() { lightbox.style.display = 'none'; }
+    document.onkeydown = (e) => { if(e.key === 'Escape') closeLightbox(); };
 </script>
 </body>
 </html>
