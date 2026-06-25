@@ -87,14 +87,14 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     
-    // Vytvoříme seznam všech souborů
+    // Vytvoříme seznam všech souborů, které se mají zobrazit
     const soubory = [];
     for(let i = 1; i <= 49; i++) soubory.push(`${i}.jpeg`);
     for(let i = 1; i <= 34; i++) soubory.push(`b${i}.jpeg`);
 
     let currentIndex = 0;
 
-    // Generování galerie
+    // Generování galerie - vloží všechny obrázky ze seznamu
     soubory.forEach((soubor, index) => {
         const img = document.createElement('img');
         img.src = `fotky/2024/${soubor}`;
@@ -117,10 +117,12 @@
         lightboxImg.src = `fotky/2024/${soubory[currentIndex]}`;
     }
 
+    // Zavření lightboxu kliknutím mimo obrázek
     lightbox.onclick = (e) => { 
         if(e.target === lightbox) lightbox.classList.remove('active'); 
     };
 
+    // Ovládání klávesnicí
     document.onkeydown = (e) => {
         if(!lightbox.classList.contains('active')) return;
         if(e.key === "ArrowRight") changeImage(null, 1);
